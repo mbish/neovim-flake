@@ -2,7 +2,7 @@
   inputs = {
     neovim-flake.url = "github:jordanisaacs/neovim-flake";
     vim-buftabline-src = {
-      url = "github:ap/vim-buftabline";    
+      url = "github:ap/vim-buftabline";
       flake = false;
     };
   };
@@ -38,13 +38,14 @@
           nvim-surround
           nvim-ts-context-commentstring
           symbols-outline-nvim
+          idris-vim
           # vim-buftabline
         ];
         nnoremap = {
           "-" = ":bp<CR>";
           "=" = ":bn<CR>";
           "<C-d>" = ":w<CR>";
-          "gn" = ":RangerEdit<CR>";
+          "F" = ":RangerEdit<CR>";
           "<leader>k" = "<cmd> Telescope grep_string<CR>";
           "<leader>fG" = "<cmd> Telescope git_files<CR>";
           "<leader>fL" = "<cmd> Telescope grep_string {grep_open_files=true}<CR>";
@@ -106,19 +107,19 @@
             hi clear BufTabLineCurrent
             hi clear BufTabLineActive
             hi clear ColorColumn
-            hi link BufTabLineCurrent GruvboxYellowSign 
+            hi link BufTabLineCurrent GruvboxYellowSign
             hi BufTabLineHidden guibg=#282828 ctermfg=214 ctermbg=237 guifg=#a89984
             hi BufTabLineActive guibg=#3c3836 ctermfg=214 ctermbg=237 guifg=#fabd2f
             hi BufTabLineCurrent guibg=#504945 ctermfg=214 ctermbg=237 guifg=#fabd2f gui=bold cterm=bold
             hi BufTabLineFill guibg=#282828 ctermfg=214 ctermbg=237 guifg=#a89984
             hi link BufTabLineActive GruvboxYellow
 
-            hi clear BufferLineBufferSelected 
+            hi clear BufferLineBufferSelected
             hi clear BufferLineBufferVisible
             hi BufferLineBufferSelected guibg=#504945 ctermfg=214 ctermbg=237 guifg=#fabd2f gui=bold cterm=bold
             hi BufferLineBufferVisible guibg=#3c3836 ctermfg=214 ctermbg=237 guifg=#fabd2f
           '';
-       };
+        };
       };
     };
 
@@ -128,6 +129,9 @@
       modules = [configModule];
     };
   in {
-    packages.${system}.neovim = neovimExtended;
+    packages.${system} = rec {
+      neovim = neovimExtended;
+      default = neovim;
+    };
   };
 }
