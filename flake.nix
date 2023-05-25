@@ -15,8 +15,8 @@
     vim-buftabline-src,
     flake-utils,
     ...
-  }: flake-utils.lib.eachDefaultSystem (system:
-    let
+  }:
+    flake-utils.lib.eachDefaultSystem (system: let
       vim-buftabline = pkgs.vimUtils.buildVimPlugin {
         name = "vim-buftabline";
         src = vim-buftabline-src;
@@ -36,6 +36,7 @@
             ranger-vim
             kommentary
             telescope-fzf-native-nvim
+            fzf-vim
             haskell-tools-nvim
             nvim-dap
             nvim-surround
@@ -50,8 +51,9 @@
             "<C-d>" = ":w<CR>";
             "F" = ":RangerEdit<CR>";
             "<leader>k" = "<cmd> Telescope grep_string<CR>";
+            "<C-p>" = "<Esc>:Rg ";
             "<leader>fG" = "<cmd> Telescope git_files<CR>";
-            "<leader>fL" = "<cmd> Telescope grep_string {grep_open_files=true}<CR>";
+            "<leader>fL" = "<cmd> Lines<CR>";
             "c/" = ":nohlsearch<CR>";
             "<F4>" = ":SymbolsOutline<CR>";
           };
@@ -131,8 +133,7 @@
         inherit pkgs;
         modules = [configModule];
       };
-    in
-    {
+    in {
       packages = rec {
         neovim = neovimExtended;
         default = neovim;
