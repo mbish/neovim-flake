@@ -26,6 +26,7 @@
       nvimlib = neovim-flake.lib.nvim;
       configModule = {
         config.vim = {
+          theme.enable = lib.mkForce true;
           theme.name = "gruvbox";
           languages.nix.enable = true;
           filetree.nvimTreeLua.enable = false;
@@ -139,6 +140,9 @@
               hi BufferLineBufferVisible guibg=#3c3836 ctermfg=214 ctermbg=237 guifg=#fabd2f
             '';
           };
+          /* useTerminalColors = nvimlib.dag.entryAnywhere ''
+            set notermguicolors t_Co=16
+          ''; */
         };
       };
 
