@@ -7,6 +7,10 @@
     flake-utils.url = "github:numtide/flake-utils";
     neovim-flake.url = "github:jordanisaacs/neovim-flake";
     neovim-flake.inputs.flake-utils.follows = "flake-utils";
+    noctu = {
+      url = "github:noahfrederick/vim-noctu";
+      flake = false;
+    };
   };
 
   outputs = {
@@ -14,6 +18,7 @@
     neovim-flake,
     vim-buftabline-src,
     flake-utils,
+    noctu,
     ...
   }:
     flake-utils.lib.eachDefaultSystem (system: let
@@ -123,6 +128,10 @@
             lineNumbers = nvimlib.dag.entryAnywhere ''
               set norelativenumber
             '';
+            /* noctuTheme = nvimlib.dag.entryAfter ["lineNumbers"] (builtins.readFile "${noctu}/colors/noctu.vim");
+            force16Clors = nvimlib.dag.entryAfter ["noctuTheme"] ''
+              set notermguicolors t_Co=16
+            ''; */
             buftabLineHighlighting = nvimlib.dag.entryAnywhere ''
               hi clear BufTabLineCurrent
               hi clear BufTabLineActive
@@ -140,9 +149,6 @@
               hi BufferLineBufferVisible guibg=#3c3836 ctermfg=214 ctermbg=237 guifg=#fabd2f
             '';
           };
-          /* useTerminalColors = nvimlib.dag.entryAnywhere ''
-            set notermguicolors t_Co=16
-          ''; */
         };
       };
 

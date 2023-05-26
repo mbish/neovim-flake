@@ -554,6 +554,22 @@
         "type": "gitlab"
       }
     },
+    "noctu": {
+      "flake": false,
+      "locked": {
+        "lastModified": 1435372792,
+        "narHash": "sha256-fiMYfRlm/KiMQybL97RcWy3Y+0qim6kl3ZkBvCuv4ZM=",
+        "owner": "noahfrederick",
+        "repo": "vim-noctu",
+        "rev": "de2ff9855bccd72cd9ff3082bc89e4a4f36ea4fe",
+        "type": "github"
+      },
+      "original": {
+        "owner": "noahfrederick",
+        "repo": "vim-noctu",
+        "type": "github"
+      }
+    },
     "null-ls": {
       "flake": false,
       "locked": {
@@ -901,6 +917,7 @@
         "flake-utils": "flake-utils",
         "neovim-flake": "neovim-flake",
         "nixpkgs": "nixpkgs_4",
+        "noctu": "noctu",
         "vim-buftabline-src": "vim-buftabline-src"
       }
     },
