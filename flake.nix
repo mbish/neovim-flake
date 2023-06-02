@@ -123,7 +123,7 @@
               }
               require('telescope').load_extension('fzf')
             '';
-            haskellToolsConfiguration = nvimlib.dag.entryAnywhere (builtins.readFile ./haskell.lua);
+            haskellToolsConfiguration = nvimlib.dag.entryAfter ["null_ls"] (builtins.readFile ./haskell.lua);
           };
           configRC = {
             lineNumbers = nvimlib.dag.entryAnywhere ''
