@@ -123,7 +123,15 @@
               }
               require('telescope').load_extension('fzf')
             '';
-            haskellToolsConfiguration = nvimlib.dag.entryAfter ["null_ls"] (builtins.readFile ./haskell.lua);
+            haskellToolsConfiguration = ''
+              -- Haskell config
+              lspconfig.hls.setup {
+                capabilities = capabilities;
+                on_attach = default_on_attach;
+                cmd = { "haskell-language-server-wrapper", "--lsp", "-j", "2" };
+                root_dir = lspconfig.util.root_pattern("hie.yaml", "stack.yaml", ".cabal", "cabal.project", "project.yaml");
+              }
+            '';
           };
           configRC = {
             lineNumbers = nvimlib.dag.entryAnywhere ''
