@@ -123,15 +123,18 @@
               }
               require('telescope').load_extension('fzf')
             '';
+            haskellToolsConfiguration = nvimlib.dag.entryAnywhere (builtins.readFile ./haskell.lua);
           };
           configRC = {
             lineNumbers = nvimlib.dag.entryAnywhere ''
               set norelativenumber
             '';
-            /* noctuTheme = nvimlib.dag.entryAfter ["lineNumbers"] (builtins.readFile "${noctu}/colors/noctu.vim");
+            /*
+               noctuTheme = nvimlib.dag.entryAfter ["lineNumbers"] (builtins.readFile "${noctu}/colors/noctu.vim");
             force16Clors = nvimlib.dag.entryAfter ["noctuTheme"] ''
               set notermguicolors t_Co=16
-            ''; */
+            '';
+            */
             buftabLineHighlighting = nvimlib.dag.entryAnywhere ''
               hi clear BufTabLineCurrent
               hi clear BufTabLineActive
