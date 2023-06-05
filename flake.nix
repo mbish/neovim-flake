@@ -52,6 +52,7 @@
             nvim-ts-context-commentstring
             symbols-outline-nvim
             idris-vim
+            copilot-vim
             # vim-buftabline
           ];
           nnoremap = {
@@ -163,6 +164,11 @@
               hi clear BufferLineBufferVisible
               hi BufferLineBufferSelected guibg=#504945 ctermfg=214 ctermbg=237 guifg=#fabd2f gui=bold cterm=bold
               hi BufferLineBufferVisible guibg=#3c3836 ctermfg=214 ctermbg=237 guifg=#fabd2f
+            '';
+            ai = nvimlib.dag.entryAnywhere ''
+              let g:copilot_no_tab_map = v:true
+              imap <silent><script><expr> <C-J> copilot#Accept("\<CR>")
+              let g:copilot_no_tab_map = v:true
             '';
           };
         };
