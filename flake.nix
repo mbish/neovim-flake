@@ -37,6 +37,9 @@
           filetree.nvimTreeLua.enable = false;
           tabline.nvimBufferline.enable = true;
           autopairs.enable = false;
+          lsp = {
+            formatOnSave = true;
+          };
           startPlugins = with pkgs.vimPlugins; [
             hop-nvim
             ranger-vim
@@ -62,6 +65,8 @@
             "<leader>fL" = "<cmd> Lines<CR>";
             "c/" = ":nohlsearch<CR>";
             "<F4>" = ":SymbolsOutline<CR>";
+            "<leader>ad" = "<cmd>let g:formatsave=v:false<CR>";
+            "<leader>ae" = "<cmd>let g:formatsave=v:true<CR>";
           };
           inoremap = {
             "<C-k>" = "<Esc>";
