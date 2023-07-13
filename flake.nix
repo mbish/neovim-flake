@@ -40,6 +40,7 @@
           lsp = {
             formatOnSave = true;
           };
+          preventJunkFiles = true;
           startPlugins = with pkgs.vimPlugins; [
             hop-nvim
             ranger-vim
