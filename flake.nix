@@ -53,8 +53,9 @@
             nvim-ts-context-commentstring
             symbols-outline-nvim
             idris-vim
-            copilot-vim
+            # copilot-vim
             # vim-buftabline
+            fugitive
           ];
           nnoremap = {
             "-" = ":bp<CR>";
