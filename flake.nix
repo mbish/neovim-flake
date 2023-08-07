@@ -62,10 +62,10 @@
             "=" = ":bn<CR>";
             "<C-d>" = ":w<CR>";
             "F" = ":RangerEdit<CR>";
-            "<leader>k" = "<cmd> Telescope grep_string<CR>";
+            "<leader>k" = "\"zyiw :Rg <C-r>z<CR>";
             "<C-p>" = "<Esc>:Rg ";
-            "<leader>fG" = "<cmd> Telescope git_files<CR>";
-            "<leader>fL" = "<cmd> Lines<CR>";
+            "<leader>G" = "<cmd> Telescope git_files<CR>";
+            "<leader>L" = "<cmd> Lines<CR>";
             "c/" = ":nohlsearch<CR>";
             "<F4>" = ":SymbolsOutline<CR>";
             "<leader>ad" = "<cmd>let g:formatsave=v:false<CR>";
