@@ -172,6 +172,11 @@
               imap <silent><script><expr> <C-J> copilot#Accept("\<CR>")
               let g:copilot_no_tab_map = v:true
             '';
+            direnv = nvimlib.dag.entryAfter ["luaScript"] ''
+              if filereadable("$DIRENV_EXTRA_VIMRC")
+                source $DIRENV_EXTRA_VIMRC
+              endif
+            '';
           };
         };
       };
