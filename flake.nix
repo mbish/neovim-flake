@@ -1,5 +1,6 @@
 {
   inputs = {
+    nixpkgs.url = "github:nixos/nixpkgs/nixos-unstable";
     vim-buftabline-src = {
       url = "github:ap/vim-buftabline";
       flake = false;
@@ -173,9 +174,23 @@
               let g:copilot_no_tab_map = v:true
             '';
             direnv = nvimlib.dag.entryAfter ["luaScript"] ''
-              if filereadable("$DIRENV_EXTRA_VIMRC")
+              if filereadable($DIRENV_EXTRA_VIMRC)
                 source $DIRENV_EXTRA_VIMRC
               endif
+            '';
+            whitespace = nvimlib.dag.entryAnywhere ''
+              function <SID>StripTrailingWhitespace()
+                  " Preparation: save last search, and cursor position.
+                  let l:_s=@/
+                  let l:l = line('.')
+                  let l:c = col('.')
+                  " Do the business:
+                  %s/\s\+$//e
+                  " Clean up: restore previous search history, and cursor position
+                  let @/=l:_s
+                  call cursor(l:l, l:c)
+              endfunction
+              nmap <silent> <leader>t :call <SID>StripTrailingWhitespace()<CR>
             '';
           };
         };
