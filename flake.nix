@@ -57,6 +57,7 @@
             # copilot-vim
             # vim-buftabline
             fugitive
+            ultisnips
           ];
           nnoremap = {
             "-" = ":bp<CR>";
@@ -191,6 +192,12 @@
                   call cursor(l:l, l:c)
               endfunction
               nmap <silent> <leader>t :call <SID>StripTrailingWhitespace()<CR>
+            '';
+            ultisnips = nvimlib.dag.entryAnywhere ''
+              let g:UltiSnipsExpandTrigger='<c-a>'
+              let g:UltiSnipsJumpForwardTrigger='<c-l>'
+              let g:UltiSnipsJumpBackwardTrigger='<c-h>'
+              let g:UltiSnipsSnippetDirectories = ["UltiSnips", "${./snippets}"]
             '';
           };
         };
