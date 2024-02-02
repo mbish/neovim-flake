@@ -31,7 +31,7 @@
       pkgs = nixpkgs.legacyPackages.${system};
       lib = nixpkgs.lib;
       nvimlib = neovim-flake.lib.nvim;
-      configModule = {
+      configModule = args: {
         config.vim = {
           theme.enable = lib.mkForce false;
           theme.name = "gruvbox";
@@ -157,6 +157,16 @@
               require('ts_context_commentstring').setup {}
               vim.g.skip_ts_context_commentstring_module = true
             '';
+            base16-colors = nvimlib.dag.entryAnywhere ''
+              vim.cmd('colorscheme ${args.colorscheme}')
+            '';
+            base16-comment-override =
+              nvimlib.dag.entryAfter ["base16-colors"]
+              ''
+                local color = require('base16-colorscheme').colors.base04
+                vim.cmd('highlight Comment guifg=' .. color)
+                vim.cmd('highlight TSComment guifg=' .. color)
+              '';
           };
           configRC = {
             lineNumbers = nvimlib.dag.entryAnywhere ''
@@ -214,22 +224,21 @@
               let g:UltiSnipsJumpBackwardTrigger='<c-h>'
               let g:UltiSnipsSnippetDirectories = ["UltiSnips", "${./snippets}"]
             '';
-            base16-colorscheme = nvimlib.dag.entryAnywhere ''
-              let base16colorspace=256  " Access colors present in 256 colorspace
-              colorscheme base16-gruvbox-material-dark-hard
-            '';
           };
         };
       };
 
       baseNeovim = neovim-flake.packages.${system}.maximal;
-      neovimExtended = baseNeovim.extendConfiguration {
-        inherit pkgs;
-        modules = [configModule];
-      };
+      neovimExtended = args:
+        baseNeovim.extendConfiguration {
+          inherit pkgs;
+          modules = [(configModule args)];
+        };
     in {
       packages = rec {
-        neovim = neovimExtended;
+        neovim = neovimExtended {
+          colorscheme = "base16-gruvbox-material-dark-hard";
+        };
         default = neovim;
         other = neovim;
       };
