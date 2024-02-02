@@ -8,6 +8,7 @@
     flake-utils.url = "github:numtide/flake-utils";
     neovim-flake.url = "github:jordanisaacs/neovim-flake";
     neovim-flake.inputs.flake-utils.follows = "flake-utils";
+    neovim-flake.inputs.nixpkgs.follows = "nixpkgs";
     noctu = {
       url = "github:noahfrederick/vim-noctu";
       flake = false;
@@ -32,15 +33,21 @@
       nvimlib = neovim-flake.lib.nvim;
       configModule = {
         config.vim = {
-          theme.enable = lib.mkForce true;
+          theme.enable = lib.mkForce false;
           theme.name = "gruvbox";
           languages.nix.enable = true;
           filetree.nvimTreeLua.enable = false;
           tabline.nvimBufferline.enable = true;
           autopairs.enable = false;
+          languages = {
+            sql.lsp.enable = false;
+          };
           lsp = {
             formatOnSave = true;
           };
+          treesitter.grammars = [
+            pkgs.vimPlugins.nvim-treesitter-parsers.php
+          ];
           preventJunkFiles = true;
           startPlugins = with pkgs.vimPlugins; [
             hop-nvim
@@ -56,8 +63,11 @@
             idris-vim
             # copilot-vim
             # vim-buftabline
+            #base16-vim
+            nvim-base16
             fugitive
             ultisnips
+            vimwiki
           ];
           nnoremap = {
             "-" = ":bp<CR>";
@@ -72,6 +82,7 @@
             "<F4>" = ":SymbolsOutline<CR>";
             "<leader>ad" = "<cmd>let g:formatsave=v:false<CR>";
             "<leader>ae" = "<cmd>let g:formatsave=v:true<CR>";
+            "<leader>ww" = "<cmd>VimwikiIndex<CR>";
           };
           inoremap = {
             "<C-k>" = "<Esc>";
@@ -142,6 +153,10 @@
                 root_dir = lspconfig.util.root_pattern("hie.yaml", "stack.yaml", ".cabal", "cabal.project", "project.yaml");
               }
             '';
+            treesitterWarningFix = nvimlib.dag.entryAnywhere ''
+              require('ts_context_commentstring').setup {}
+              vim.g.skip_ts_context_commentstring_module = true
+            '';
           };
           configRC = {
             lineNumbers = nvimlib.dag.entryAnywhere ''
@@ -198,6 +213,10 @@
               let g:UltiSnipsJumpForwardTrigger='<c-l>'
               let g:UltiSnipsJumpBackwardTrigger='<c-h>'
               let g:UltiSnipsSnippetDirectories = ["UltiSnips", "${./snippets}"]
+            '';
+            base16-colorscheme = nvimlib.dag.entryAnywhere ''
+              let base16colorspace=256  " Access colors present in 256 colorspace
+              colorscheme base16-gruvbox-material-dark-hard
             '';
           };
         };
