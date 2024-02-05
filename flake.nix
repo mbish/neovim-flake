@@ -268,24 +268,24 @@
           modules = [
             configModule
             (vimColors {
-              colorscheme = "base16-gruvbox-material-dark-hard";
+              # colorscheme = "base16-gruvbox-material-dark-hard";
               colorPallet = {
                 base00 = "111111"; # black
-                base01 = "333333";
+                base01 = "2a2a26";
                 base02 = "555555";
                 base03 = "777777";
                 base04 = "999999";
-                base05 = "bbbbbb";
+                base05 = "f0b2bc"; # used for parens and other tokens
                 base06 = "dddddd";
-                base07 = "ffffff"; # white
-                base08 = "a90000"; # red
-                base09 = "e98129"; # orange
+                base07 = "f0b2bc"; # white
+                base08 = "dc3d3b"; # red
+                base09 = "ff7500"; # orange
                 base0A = "faefe1"; # yellow
                 base0B = "a6e165"; # green
                 base0C = "8bc7c3"; # aqua
                 base0D = "1d75b7"; # blue
                 base0E = "a46dc8"; # purple
-                base0F = "f0b2bc"; # maroon
+                base0F = "2184cf"; # maroon
               };
             })
           ];
