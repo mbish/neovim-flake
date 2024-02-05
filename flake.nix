@@ -296,6 +296,7 @@
         };
       };
       lib = {
+        baseModule = configModule;
         inherit vimColors;
       };
     });
