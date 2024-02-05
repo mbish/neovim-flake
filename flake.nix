@@ -221,10 +221,10 @@
               else if builtins.hasAttr "colorPallet" cfg
               then ''
                 require('base16-colorscheme').setup({
-                  base00 = '#${cfg.base01}', base01 = '#${cfg.base01}', base02 = '#${cfg.base02}', base03 = '#${cfg.base03}',
-                  base04 = '#${cfg.base04}', base05 = '#${cfg.base05}', base06 = '#${cfg.base06}', base07 = '#${cfg.base07}',
-                  base08 = '#${cfg.base08}', base09 = '#${cfg.base09}', base0A = '#${cfg.base0A}', base0B = '#${cfg.base0B}',
-                  base0C = '#${cfg.base0C}', base0D = '#${cfg.base0D}', base0E = '#${cfg.base0E}', base0F = '#${cfg.base0F}',
+                  base00 = '#${cfg.colorPallet.base01}', base01 = '#${cfg.colorPallet.base01}', base02 = '#${cfg.colorPallet.base02}', base03 = '#${cfg.colorPallet.base03}',
+                  base04 = '#${cfg.colorPallet.base04}', base05 = '#${cfg.colorPallet.base05}', base06 = '#${cfg.colorPallet.base06}', base07 = '#${cfg.colorPallet.base07}',
+                  base08 = '#${cfg.colorPallet.base08}', base09 = '#${cfg.colorPallet.base09}', base0A = '#${cfg.colorPallet.base0A}', base0B = '#${cfg.colorPallet.base0B}',
+                  base0C = '#${cfg.colorPallet.base0C}', base0D = '#${cfg.colorPallet.base0D}', base0E = '#${cfg.colorPallet.base0E}', base0F = '#${cfg.colorPallet.base0F}',
                 })
               ''
               else ''
@@ -269,6 +269,24 @@
             configModule
             (vimColors {
               colorscheme = "base16-gruvbox-material-dark-hard";
+              colorPallet = {
+                base00 = "111111"; # black
+                base01 = "333333";
+                base02 = "555555";
+                base03 = "777777";
+                base04 = "999999";
+                base05 = "bbbbbb";
+                base06 = "dddddd";
+                base07 = "ffffff"; # white
+                base08 = "a90000"; # red
+                base09 = "e98129"; # orange
+                base0A = "faefe1"; # yellow
+                base0B = "a6e165"; # green
+                base0C = "8bc7c3"; # aqua
+                base0D = "1d75b7"; # blue
+                base0E = "a46dc8"; # purple
+                base0F = "f0b2bc"; # maroon
+              };
             })
           ];
         };
