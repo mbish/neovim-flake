@@ -22,7 +22,7 @@
     flake-utils,
     noctu,
     ...
-  }:
+  } @ inputs:
     flake-utils.lib.eachDefaultSystem (system: let
       vim-buftabline = pkgs.vimUtils.buildVimPlugin {
         name = "vim-buftabline";
@@ -37,8 +37,10 @@
       nvimlib = neovim-flake.lib.nvim;
       configModule = {
         config = {
+          build.rawPlugins = nvimlib.plugins.fromInputs inputs "plugin-";
           vim = lib.mkMerge [
             {
+              chatgpt.enable = false;
               theme.enable = lib.mkForce false;
               theme.name = "gruvbox";
               languages.nix.enable = true;
@@ -148,10 +150,18 @@
                   require('telescope').load_extension('fzf')
                 '';
                 haskellToolsConfiguration = ''
-                  -- Haskell config
-                  lspconfig.hls.setup {
-                    capabilities = capabilities;
-                    on_attach = default_on_attach;
+                  local ht = require("haskell-tools");
+                  vim.g.haskell_tools = {
+                    tools = {
+                       hover = {
+                        stylize_markdown = false,
+                        auto_focus = true,
+                      },
+                    };
+                    on_attach = function (client, bufnr)
+                      local opts = { noremap = true, silent = true, buffer = bufnr, }
+                      vim.keymap.set('n', '<space>hs', ht.hoogle.hoogle_signature, opts)
+                    end,
                     cmd = { "haskell-language-server-wrapper", "--lsp", "-j", "2" };
                     root_dir = lspconfig.util.root_pattern("hie.yaml", "stack.yaml", ".cabal", "cabal.project", "project.yaml");
                   }
