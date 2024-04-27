@@ -47,6 +47,7 @@
               filetree.nvimTreeLua.enable = false;
               tabline.nvimBufferline.enable = true;
               autopairs.enable = false;
+              autoIndent = true;
               languages = {
                 sql.lsp.enable = false;
               };
@@ -66,19 +67,23 @@
                 haskell-tools-nvim
                 nvim-dap
                 nvim-surround
+                guess-indent-nvim
                 nvim-ts-context-commentstring
                 symbols-outline-nvim
                 idris-vim
-                nvim-base16
+                base16-nvim
                 fugitive
                 ultisnips
                 vimwiki
+                fzf-hoogle-vim
+                vim-dispatch
+                vim-dispatch-neovim
               ];
               nnoremap = {
                 "-" = ":bp<CR>";
                 "=" = ":bn<CR>";
                 "<C-d>" = ":w<CR>";
-                "F" = ":RangerEdit<CR>";
+                "F" = ":RangerCurrentFile<CR>";
                 "<leader>k" = "\"zyiw :Rg <C-r>z<CR>";
                 "<C-p>" = "<Esc>:Rg ";
                 "<leader>G" = "<cmd> Telescope git_files<CR>";
@@ -132,6 +137,16 @@
                     },
                   }
                 '';
+                guessIndent = nvimlib.dag.entryAnywhere ''
+                  require('guess-indent').setup {}
+                '';
+                treeSitterIndent = nvimlib.dag.entryAnywhere ''
+                  require'nvim-treesitter.configs'.setup {
+                    indent = {
+                      enable = true
+                    }
+                  }
+                '';
                 symbolsOutline = nvimlib.dag.entryAnywhere ''
                   require("symbols-outline").setup()
                 '';
@@ -150,21 +165,33 @@
                   require('telescope').load_extension('fzf')
                 '';
                 haskellToolsConfiguration = ''
-                  local ht = require("haskell-tools");
-                  vim.g.haskell_tools = {
-                    tools = {
-                       hover = {
-                        stylize_markdown = false,
-                        auto_focus = true,
-                      },
-                    };
-                    on_attach = function (client, bufnr)
+                  lspconfig.hls.setup {
+                    capabilities = capabilities;
+                    on_attach = function (client, bufnr, ht)
                       local opts = { noremap = true, silent = true, buffer = bufnr, }
+                      local ht = require('haskell-tools')
                       vim.keymap.set('n', '<space>hs', ht.hoogle.hoogle_signature, opts)
                     end,
                     cmd = { "haskell-language-server-wrapper", "--lsp", "-j", "2" };
                     root_dir = lspconfig.util.root_pattern("hie.yaml", "stack.yaml", ".cabal", "cabal.project", "project.yaml");
-                  }
+                  };
+
+                  -- vim.g.haskell_tools = {
+                  --   tools = {
+                  --      hover = {
+                  --       stylize_markdown = false,
+                  --       auto_focus = true,
+                  --     },
+                  --   },
+                  --   hls = {
+                  --     on_attach = function (client, bufnr, ht)
+                  --       local opts = { noremap = true, silent = true, buffer = bufnr, }
+                  --       vim.keymap.set('n', '<space>hs', ht.hoogle.hoogle_signature, opts)
+                  --     end,
+                  --   },
+                  --   cmd = { "haskell-language-server-wrapper", "--lsp", "-j", "2" };
+                  --   root_dir = lspconfig.util.root_pattern("hie.yaml", "stack.yaml", ".cabal", "cabal.project", "project.yaml");
+                  -- }
                 '';
                 treesitterWarningFix = nvimlib.dag.entryAnywhere ''
                   require('ts_context_commentstring').setup {}
@@ -185,6 +212,9 @@
                   let g:copilot_no_tab_map = v:true
                   imap <silent><script><expr> <C-J> copilot#Accept("\<CR>")
                   let g:copilot_no_tab_map = v:true
+                '';
+                hoogle = nvimlib.dag.entryAnywhere ''
+                  let g:hoogle_fzf_cache_file = '~/.hoogle_cache.json'
                 '';
                 direnv = nvimlib.dag.entryAfter ["luaScript"] ''
                   if filereadable($DIRENV_EXTRA_VIMRC)
@@ -219,7 +249,7 @@
       vimColors = cfg: {
         config.vim = {
           startPlugins = with pkgs.vimPlugins; [
-            nvim-base16
+            base16-nvim
           ];
           luaConfigRC = {
             base16-colors =
