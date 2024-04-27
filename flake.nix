@@ -36,6 +36,7 @@
       lib = nixpkgs.lib;
       nvimlib = neovim-flake.lib.nvim;
       configModule = {
+        imports = [./godot.nix ./local-server.nix];
         config = {
           build.rawPlugins = nvimlib.plugins.fromInputs inputs "plugin-";
           vim = lib.mkMerge [
@@ -44,6 +45,8 @@
               theme.enable = lib.mkForce false;
               theme.name = "gruvbox";
               languages.nix.enable = true;
+              languages.gdscript.enable = true;
+              server.enable = true;
               filetree.nvimTreeLua.enable = false;
               tabline.nvimBufferline.enable = true;
               autopairs.enable = false;
@@ -83,7 +86,7 @@
                 "-" = ":bp<CR>";
                 "=" = ":bn<CR>";
                 "<C-d>" = ":w<CR>";
-                "F" = ":RangerCurrentFile<CR>";
+                "F" = ":RangerEdit<CR>";
                 "<leader>k" = "\"zyiw :Rg <C-r>z<CR>";
                 "<C-p>" = "<Esc>:Rg ";
                 "<leader>G" = "<cmd> Telescope git_files<CR>";
