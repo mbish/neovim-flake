@@ -81,15 +81,17 @@
                 fzf-hoogle-vim
                 vim-dispatch
                 vim-dispatch-neovim
+                vim-swap
               ];
               nnoremap = {
                 "-" = ":bp<CR>";
                 "=" = ":bn<CR>";
                 "<C-d>" = ":w<CR>";
-                "F" = ":RangerEdit<CR>";
+                "F" = ":RangerVSplit<CR>";
                 "<leader>k" = "\"zyiw :Rg <C-r>z<CR>";
                 "<C-p>" = "<Esc>:Rg ";
                 "<leader>G" = "<cmd> Telescope git_files<CR>";
+                "<leader>jd" = "<cmd> Telescope lsp_definitions<CR>";
                 "<leader>L" = "<cmd> Lines<CR>";
                 "c/" = ":nohlsearch<CR>";
                 "<F4>" = ":SymbolsOutline<CR>";
@@ -125,8 +127,22 @@
                     }
                   })
                 '';
+                pyrightSearchConfig = nvimlib.dag.entryAfter ["python-lsp"] ''
+                  lspconfig.pyright.setup{
+                    settings = {
+                      python = {
+                        analysis = {
+                          autoSearchPaths = true,
+                          capabilities = capabilities;
+                          on_attach = default_on_attach;
+                          useLibraryCodeForTypes = true
+                        }
+                      }
+                    }
+                  }
+                '';
                 hoverForDiagnostics = nvimlib.dag.entryAnywhere ''
-                  vim.cmd [[autocmd! CursorHold,CursorHoldI * lua vim.diagnostic.open_float(nil, {focus=false, scope="cursor"})]]
+                  vim.cmd [[autocmd! CursorHold,CursorHoldI * lua vim.diagnostic.open_float(nil, {focus=false, scope="cursor", source="always"})]]
                 '';
                 surround = nvimlib.dag.entryAnywhere ''
                   require("nvim-surround").setup({})
