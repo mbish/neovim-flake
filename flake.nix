@@ -46,7 +46,7 @@
               theme.name = "gruvbox";
               languages.nix.enable = true;
               languages.gdscript.enable = true;
-              server.enable = true;
+              server.enable = false;
               filetree.nvimTreeLua.enable = false;
               tabline.nvimBufferline.enable = true;
               autopairs.enable = false;
