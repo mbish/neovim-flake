@@ -78,7 +78,7 @@
                 fugitive
                 ultisnips
                 vimwiki
-                fzf-hoogle-vim
+                # fzf-hoogle-vim
                 vim-dispatch
                 vim-dispatch-neovim
                 vim-swap
@@ -127,20 +127,20 @@
                     }
                   })
                 '';
-                pyrightSearchConfig = nvimlib.dag.entryAfter ["python-lsp"] ''
-                  lspconfig.pyright.setup{
-                    settings = {
-                      python = {
-                        analysis = {
-                          autoSearchPaths = true,
-                          capabilities = capabilities;
-                          on_attach = default_on_attach;
-                          useLibraryCodeForTypes = true
-                        }
-                      }
-                    }
-                  }
-                '';
+                # pyrightSearchConfig = nvimlib.dag.entryAfter ["python-lsp"] ''
+                #   lspconfig.pyright.setup{
+                #     settings = {
+                #       python = {
+                #         analysis = {
+                #           autoSearchPaths = true,
+                #           capabilities = capabilities;
+                #           on_attach = default_on_attach;
+                #           useLibraryCodeForTypes = true
+                #         }
+                #       }
+                #     }
+                #   }
+                # '';
                 hoverForDiagnostics = nvimlib.dag.entryAnywhere ''
                   vim.cmd [[autocmd! CursorHold,CursorHoldI * lua vim.diagnostic.open_float(nil, {focus=false, scope="cursor", source="always"})]]
                 '';
@@ -218,6 +218,9 @@
                 '';
               };
               configRC = {
+                ripregFix = nvimlib.dag.entryAnywhere ''
+                  command! -bang -nargs=* Rg call fzf#vim#grep("${pkgs.ripgrep}/bin/rg --column --line-number --no-heading --color=always --smart-case -- ".fzf#shellescape(<q-args>), fzf#vim#with_preview(), <bang>0)
+                '';
                 lineNumbers = nvimlib.dag.entryAnywhere ''
                   set norelativenumber
                 '';
@@ -259,6 +262,9 @@
                   let g:UltiSnipsJumpForwardTrigger='<c-l>'
                   let g:UltiSnipsJumpBackwardTrigger='<c-h>'
                   let g:UltiSnipsSnippetDirectories = ["UltiSnips", "${./snippets}"]
+                '';
+                fugitiveGitSettings = nvimlib.dag.entryAnywhere ''
+                  let g:fugitive_git_command = "${pkgs.git}/bin/git"
                 '';
               };
             }
