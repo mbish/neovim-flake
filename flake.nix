@@ -264,7 +264,7 @@
                   let g:UltiSnipsSnippetDirectories = ["UltiSnips", "${./snippets}"]
                 '';
                 fugitiveGitSettings = nvimlib.dag.entryAnywhere ''
-                  let g:fugitive_git_command = "${pkgs.git}/bin/git"
+                  let g:fugitive_git_executable = "${pkgs.git}/bin/git"
                 '';
               };
             }
