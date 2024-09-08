@@ -22,8 +22,10 @@
     flake-utils,
     noctu,
     ...
-  } @ inputs:
-    flake-utils.lib.eachDefaultSystem (system: let
+  } @ inputs: let
+    systems = ["x86_64-linux" "aarch64-linux"];
+  in
+    flake-utils.lib.eachSystem systems (system: let
       vim-buftabline = pkgs.vimUtils.buildVimPlugin {
         name = "vim-buftabline";
         src = vim-buftabline-src;
