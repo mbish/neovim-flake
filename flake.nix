@@ -353,10 +353,27 @@
           })
         ];
       };
+      neovimWrapped = let
+        packagesInExe = [
+          pkgs.git
+        ];
+      in
+        pkgs.stdenv.mkDerivation {
+          name = "neovim";
+          nativeBuildInputs = [pkgs.makeWrapper];
+          phases = ["installPhase"];
+          installPhase = ''
+            mkdir -p $out/share
+            mkdir -p $out/bin
+            cp ${anotherExtension}/bin/nvim $out/bin/nvim
+            wrapProgram $out/bin/nvim \
+              --prefix PATH : ${pkgs.lib.makeBinPath packagesInExe}
+          '';
+        };
     in {
       packages = rec {
         neovim = anotherExtension;
-        default = neovim;
+        default = neovimWrapped;
         colorless = neovimExtended.extendConfiguration {
           inherit pkgs;
           modules = [configModule];
