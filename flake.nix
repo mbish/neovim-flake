@@ -356,6 +356,8 @@
       neovimWrapped = let
         packagesInExe = [
           pkgs.git
+          pkgs.ranger
+          pkgs.tmux
         ];
       in
         pkgs.stdenv.mkDerivation {
