@@ -81,7 +81,9 @@
         "plugin-dracula": "plugin-dracula",
         "plugin-dracula-nvim": "plugin-dracula-nvim",
         "plugin-fidget": "plugin-fidget",
-        "plugin-gitsigns-nvim": "plugin-gitsigns-nvim",
+        "plugin-gitsigns-nvim": [
+          "override-gitsigns-nvim"
+        ],
         "plugin-glow-nvim": "plugin-glow-nvim",
         "plugin-gruvbox": "plugin-gruvbox",
         "plugin-indent-blankline": "plugin-indent-blankline",
@@ -229,6 +231,22 @@
       "original": {
         "owner": "noahfrederick",
         "repo": "vim-noctu",
+        "type": "github"
+      }
+    },
+    "override-gitsigns-nvim": {
+      "flake": false,
+      "locked": {
+        "lastModified": 1727424886,
+        "narHash": "sha256-o2Y57z7IuIa9wvLlzyslcs3/+iaZzuqM1NImlKAPt5Y=",
+        "owner": "lewis6991",
+        "repo": "gitsigns.nvim",
+        "rev": "863903631e676b33e8be2acb17512fdc1b80b4fb",
+        "type": "github"
+      },
+      "original": {
+        "owner": "lewis6991",
+        "repo": "gitsigns.nvim",
         "type": "github"
       }
     },
@@ -453,22 +471,6 @@
       "original": {
         "owner": "j-hui",
         "repo": "fidget.nvim",
-        "type": "github"
-      }
-    },
-    "plugin-gitsigns-nvim": {
-      "flake": false,
-      "locked": {
-        "lastModified": 1693635939,
-        "narHash": "sha256-yu0AJlUTXGeqP4jujrqnqEFMONAp9juZbH4AqUkOKG4=",
-        "owner": "lewis6991",
-        "repo": "gitsigns.nvim",
-        "rev": "d927caa075df63bf301d92f874efb72fd22fd3b4",
-        "type": "github"
-      },
-      "original": {
-        "owner": "lewis6991",
-        "repo": "gitsigns.nvim",
         "type": "github"
       }
     },
@@ -1193,6 +1195,7 @@
         "neovim-flake": "neovim-flake",
         "nixpkgs": "nixpkgs_2",
         "noctu": "noctu",
+        "override-gitsigns-nvim": "override-gitsigns-nvim",
         "vim-buftabline-src": "vim-buftabline-src"
       }
     },

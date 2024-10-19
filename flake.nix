@@ -6,9 +6,16 @@
       flake = false;
     };
     flake-utils.url = "github:numtide/flake-utils";
-    neovim-flake.url = "github:jordanisaacs/neovim-flake";
-    neovim-flake.inputs.flake-utils.follows = "flake-utils";
-    neovim-flake.inputs.nixpkgs.follows = "nixpkgs";
+    override-gitsigns-nvim.url = "github:lewis6991/gitsigns.nvim";
+    override-gitsigns-nvim.flake = false;
+    neovim-flake = {
+      url = "github:jordanisaacs/neovim-flake";
+      inputs = {
+        flake-utils.follows = "flake-utils";
+        nixpkgs.follows = "nixpkgs";
+        plugin-gitsigns-nvim.follows = "override-gitsigns-nvim";
+      };
+    };
     noctu = {
       url = "github:noahfrederick/vim-noctu";
       flake = false;
@@ -84,6 +91,7 @@
                 vim-dispatch
                 vim-dispatch-neovim
                 vim-swap
+                copilot-vim
               ];
               nnoremap = {
                 "-" = ":bp<CR>";
@@ -106,6 +114,15 @@
                 "<C-d>" = "<Esc>:w<CR>";
               };
               luaConfigRC = {
+                printRootDirs = nvimlib.dag.entryAnywhere ''
+                  function LspRootDirs()
+                    local clients = vim.lsp.buf_get_clients()
+
+                    for _, client in ipairs(clients) do
+                      print(client.config.root_dir)
+                    end
+                  end
+                '';
                 myHop = nvimlib.dag.entryAfter ["hop"] ''
                   local hop = require('hop')
                   hop.setup()
@@ -129,20 +146,28 @@
                     }
                   })
                 '';
-                # pyrightSearchConfig = nvimlib.dag.entryAfter ["python-lsp"] ''
-                #   lspconfig.pyright.setup{
-                #     settings = {
-                #       python = {
-                #         analysis = {
-                #           autoSearchPaths = true,
-                #           capabilities = capabilities;
-                #           on_attach = default_on_attach;
-                #           useLibraryCodeForTypes = true
-                #         }
-                #       }
-                #     }
-                #   }
-                # '';
+                pyrightSearchConfig = nvimlib.dag.entryAfter ["python-lsp"] ''
+                  lspconfig.pyright.setup {
+                    cmd = {"pyright-langserver", "--stdio"};
+                    capabilities = capabilities;
+                    on_attach = default_on_attach;
+                    root_dir = function(fname)
+                        local root_files = {
+                            'pyrightconfig.json',
+                        }
+                        return lspconfig.util.root_pattern(unpack(root_files))(fname) or lspconfig.util.find_git_ancestor(fname) or lspconfig.util.path.dirname(fname)
+                    end,
+                    settings = {
+                      python = {
+                        analysis = {
+                          autoSearchPaths = true,
+                          diagnosticMode = "openFilesOnly",
+                          useLibraryCodeForTypes = true
+                        }
+                      }
+                    }
+                  }
+                '';
                 hoverForDiagnostics = nvimlib.dag.entryAnywhere ''
                   vim.cmd [[autocmd! CursorHold,CursorHoldI * lua vim.diagnostic.open_float(nil, {focus=false, scope="cursor", source="always"})]]
                 '';
@@ -240,7 +265,7 @@
                 hoogle = nvimlib.dag.entryAnywhere ''
                   let g:hoogle_fzf_cache_file = '~/.hoogle_cache.json'
                 '';
-                direnv = nvimlib.dag.entryAfter ["luaScript"] ''
+                direnv = nvimlib.dag.entryAfter ["ultisnips"] ''
                   if filereadable($DIRENV_EXTRA_VIMRC)
                     source $DIRENV_EXTRA_VIMRC
                   endif
@@ -358,6 +383,7 @@
           pkgs.git
           pkgs.ranger
           pkgs.tmux
+          pkgs.pyright
         ];
       in
         pkgs.stdenv.mkDerivation {
