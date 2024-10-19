@@ -23,6 +23,7 @@
   };
 
   outputs = {
+    self,
     nixpkgs,
     neovim-flake,
     vim-buftabline-src,
@@ -394,6 +395,7 @@
             mkdir -p $out/share
             mkdir -p $out/bin
             cp ${anotherExtension}/bin/nvim $out/bin/nvim
+            echo ${self.shortRev} > $out/test
             wrapProgram $out/bin/nvim \
               --prefix PATH : ${pkgs.lib.makeBinPath packagesInExe}
           '';
