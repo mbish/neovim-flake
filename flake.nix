@@ -387,19 +387,9 @@
           pkgs.pyright
         ];
       in
-        pkgs.stdenv.mkDerivation {
-          name = "neovim";
-          nativeBuildInputs = [pkgs.makeWrapper];
-          phases = ["installPhase"];
-          installPhase = ''
-            mkdir -p $out/share
-            mkdir -p $out/bin
-            cp ${anotherExtension}/bin/nvim $out/bin/nvim
-            echo ${self.shortRev} > $out/test
-            wrapProgram $out/bin/nvim \
-              --prefix PATH : ${pkgs.lib.makeBinPath packagesInExe}
-          '';
-        };
+        pkgs.writeShellScriptBin "nvim" ''
+          PATH=$PATH:${pkgs.lib.makeBinPath packagesInExe} exec ${anotherExtension}/bin/nvim "$@"
+        '';
     in {
       packages = rec {
         neovim = anotherExtension;
