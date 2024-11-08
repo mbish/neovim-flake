@@ -93,6 +93,7 @@
                 vim-dispatch-neovim
                 vim-swap
                 copilot-vim
+                nvim-lint
               ];
               nnoremap = {
                 "-" = ":bp<CR>";
@@ -109,6 +110,7 @@
                 "<leader>ad" = "<cmd>let g:formatsave=v:false<CR>";
                 "<leader>ae" = "<cmd>let g:formatsave=v:true<CR>";
                 "<leader>ww" = "<cmd>VimwikiIndex<CR>";
+                "<C-n>" = "/";
               };
               inoremap = {
                 "<C-k>" = "<Esc>";
@@ -168,6 +170,16 @@
                       }
                     }
                   }
+                '';
+                lintConfig = nvimlib.dag.entryAnywhere ''
+                  require('lint').linters_by_ft = {
+                    python = {'pylint', 'flake8'},
+                  }
+                  vim.api.nvim_create_autocmd({ "BufWritePost" }, {
+                    callback = function()
+                      require("lint").try_lint()
+                    end,
+                  })
                 '';
                 hoverForDiagnostics = nvimlib.dag.entryAnywhere ''
                   vim.cmd [[autocmd! CursorHold,CursorHoldI * lua vim.diagnostic.open_float(nil, {focus=false, scope="cursor", source="always"})]]
