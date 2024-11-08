@@ -42,6 +42,7 @@
         inherit system;
         overlays = [
         ];
+        config.allowUnfree = true;
       };
       lib = nixpkgs.lib;
       nvimlib = neovim-flake.lib.nvim;
@@ -364,7 +365,7 @@
       neovimExtended = baseNeovim.extendConfiguration {
         modules = [configModule];
       };
-      anotherExtension = neovimExtended.extendConfiguration {
+      colorExtension = neovimExtended.extendConfiguration {
         inherit pkgs;
         modules = [
           configModule
@@ -400,11 +401,11 @@
         ];
       in
         pkgs.writeShellScriptBin "nvim" ''
-          PATH=$PATH:${pkgs.lib.makeBinPath packagesInExe} exec ${anotherExtension}/bin/nvim "$@"
+          PATH=$PATH:${pkgs.lib.makeBinPath packagesInExe} exec ${colorExtension}/bin/nvim "$@"
         '';
     in {
       packages = rec {
-        neovim = anotherExtension;
+        neovim = colorExtension;
         default = neovimWrapped;
         colorless = neovimExtended.extendConfiguration {
           inherit pkgs;
