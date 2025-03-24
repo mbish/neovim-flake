@@ -302,7 +302,7 @@
                   let g:UltiSnipsExpandTrigger='<c-a>'
                   let g:UltiSnipsJumpForwardTrigger='<c-l>'
                   let g:UltiSnipsJumpBackwardTrigger='<c-h>'
-                  let g:UltiSnipsSnippetDirectories = ["UltiSnips", "${./snippets}"]
+                  let g:UltiSnipsSnippetDirectories = ["UltiSnips", expand("/home/mbishop/.config/UltiSnips"), "${./snippets}"]
                 '';
                 fugitiveGitSettings = nvimlib.dag.entryAnywhere ''
                   let g:fugitive_git_executable = "${pkgs.git}/bin/git"
