@@ -32,6 +32,7 @@ o.undofile = true
 o.updatetime = 500
 o.wildmode = "list:longest,full"
 o.modeline = false
+o.signcolumn = "yes"
 
 vim.cmd([[
     filetype plugin on

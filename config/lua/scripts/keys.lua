@@ -11,3 +11,6 @@ vim.keymap.set("n", "<F4>" , ":SymbolsOutline<CR>", { silent = true, desc = "Tog
 vim.keymap.set("n", "<leader>ad" , "<cmd>let g:formatsave,v:false<CR>", { desc = "Disable auto-format on save" })
 vim.keymap.set("n", "<leader>ae" , "<cmd>let g:formatsave,v:true<CR>", { desc = "Enable auto-format on save" })
 vim.keymap.set("n", "<C-n>" , "/", { desc = "Search in current buffer" })
+
+vim.keymap.set("i", "<C-k>", "<Esc>", { desc = "Normal Mode", remap = false})
+vim.keymap.set("i", "<C-d>", "<Esc>:w<CR>", { desc = "Save buffer", remap = false })

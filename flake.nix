@@ -441,6 +441,8 @@
             inherit customRC;
             packages.myVimPackage = with pkgs.vimPlugins; {
               start = [
+                nvim-treesitter.withAllGrammars
+                nvim-treesitter-textobjects
                 lz-n
                 base16-nvim
                 copilot-vim
@@ -460,6 +462,7 @@
                 vimwiki
                 ranger-vim
                 which-key-nvim
+                ultisnips
               ];
               opt = [
                 gitsigns-nvim
