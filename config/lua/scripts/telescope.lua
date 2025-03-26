@@ -1,24 +1,24 @@
 local builtin = require("telescope.builtin")
 
 local keys = {
-    { "<leader>G" , builtin.git_files }
-    { "<leader>ff" , builtin.find_files }
-    { "<leader>fd" , builtin.file_browser }
-    { "<leader>flD" , builtin.lsp_definitions }
-    { "<leader>fld" , builtin.diagnostics }
-    { "<leader>flt" , builtin.lsp_type_definitions }
-    { "<leader>flr" , builtin.lsp_references }
-    { "<leader>fli" , builtin.lsp_implementations }
-    { "<leader>flsb" , builtin.lsp_document_symbols }
-    { "<leader>flsw" , builtin.lsp_workspace_symbols }
-    { "<leader>fb" , builtin.buffers }
-    { "<leader>fg" , builtin.live_grep }
-    { "<leader>fa" , builtin.live_grep }
-    { "<leader>fh" , builtin.help_tags }
-    { "<leader>fs" , builtin.treesitter }
-    { "<leader>fvb" , builtin.git_branches }
-    { "<leader>fvs" , builtin.git_status }
-    { "<leader>fvx" , builtin.git_stash }
+    { "<leader>G" , builtin.git_files, mode = "n", desc = "Git files" },
+    { "<leader>ff" , builtin.find_files, mode = "n", desc = "Find files" },
+    { "<leader>fd" , builtin.file_browser, mode = "n", desc = "File browser" },
+    { "<leader>flD" , builtin.lsp_definitions, mode = "n", desc = "Definitions" },
+    { "<leader>fld" , builtin.diagnostics, mode = "n", desc = "Diagnostics" },
+    { "<leader>flt" , builtin.lsp_type_definitions, mode="n", desc = "Definitions" },
+    { "<leader>flr" , builtin.lsp_references, mode="n", desc = "References" },
+    { "<leader>fli" , builtin.lsp_implementations, mode="n", desc = "Implementations" },
+    { "<leader>flsb" , builtin.lsp_document_symbols, mode="n", desc = "Buffer Symbols" },
+    { "<leader>flsw" , builtin.lsp_workspace_symbols, mode="n", desc = "Workspace Symbols" },
+    { "<leader>fb" , builtin.buffers, mode="n", desc = "Buffers" },
+    { "<leader>fg" , builtin.live_grep, mode="n", desc = "Grep"  },
+    { "<leader>fa" , builtin.live_grep_args, mode="n", desc = "Grep (args)" },
+    { "<leader>fh" , builtin.help_tags, mode="n", desc = "Help Tags" },
+    { "<leader>fs" , builtin.treesitter, mode="n", desc = "Treesitter" },
+    { "<leader>fvb" , builtin.git_branches, mode="n", desc = "Git Branches" },
+    { "<leader>fvs" , builtin.git_status, mode="n", desc = "Git Status" },
+    { "<leader>fvx" , builtin.git_stash, mode="n", desc="Git Stash" }
 }
 
 local lazy = function()

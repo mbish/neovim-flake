@@ -460,7 +460,7 @@
                 gitsigns-nvim
                 vimwiki
                 ranger-vim
-                vim-which-key
+                which-key-nvim
               ];
               opt = [
                 gitsigns-nvim

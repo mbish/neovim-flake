@@ -26,6 +26,7 @@ o.shiftwidth = 4
 o.softtabstop = 4
 o.tabstop = 4
 o.termguicolors = true
+o.timeoutlen = 500
 o.undodir = "~/.vim/undodir"
 o.undofile = true
 o.updatetime = 500
