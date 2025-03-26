@@ -441,7 +441,7 @@
             inherit customRC;
             packages.myVimPackage = with pkgs.vimPlugins; {
               start = [
-                # fzf-hoogle-vim
+                lz-n
                 base16-nvim
                 copilot-vim
                 fzf-vim
@@ -451,7 +451,6 @@
                 idris-vim
                 kommentary
                 nvim-ts-context-commentstring
-                ranger-vim
                 symbols-outline-nvim
                 telescope-fzf-native-nvim
                 ultisnips
@@ -460,6 +459,8 @@
                 vim-swap
                 gitsigns-nvim
                 vimwiki
+                ranger-vim
+                vim-which-key
               ];
               opt = [
                 gitsigns-nvim

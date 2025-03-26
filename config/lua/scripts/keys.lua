@@ -1,0 +1,16 @@
+-- vim.keymap.set("n", "<Space>", "<Nop>", { silent = true, remap = true })
+vim.g.mapleader = " "
+
+vim.keymap.set("n", "-", "<CMD>bp<CR>")
+vim.keymap.set("n", "=", "<CMD>bn<CR>")
+vim.keymap.set("n", "<C-d>" , ":w<CR>")
+vim.keymap.set("n", "<leader>k" , "\"zyiw :Rg <C-r>z<CR>")
+vim.keymap.set("n", "<C-p>" , "<Esc>:Rg ")
+vim.keymap.set("n", "<leader>L" , "<cmd> Lines<CR>")
+vim.keymap.set("n", "c/" , ":nohlsearch<CR>")
+vim.keymap.set("n", "<F4>" , ":SymbolsOutline<CR>")
+vim.keymap.set("n", "<leader>ad" , "<cmd>let g:formatsave,v:false<CR>")
+vim.keymap.set("n", "<leader>ae" , "<cmd>let g:formatsave,v:true<CR>")
+vim.keymap.set("n", "<C-n>" , "/")
+vim.keymap.set("i", "<C-k>", "<Esc>")
+vim.keymap.set("i", "<C-d>", "<Esc>:w<CR>")
