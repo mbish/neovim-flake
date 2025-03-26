@@ -451,7 +451,6 @@
                 idris-vim
                 kommentary
                 nvim-ts-context-commentstring
-                symbols-outline-nvim
                 telescope-fzf-native-nvim
                 ultisnips
                 vim-dispatch
@@ -466,6 +465,7 @@
                 gitsigns-nvim
                 vim-startuptime
                 telescope-nvim
+                symbols-outline-nvim
                 nvim-lint
                 conform-nvim
                 nvim-surround
