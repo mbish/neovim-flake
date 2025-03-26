@@ -422,47 +422,54 @@
     };
     flake-utils.url = "github:numtide/flake-utils";
   };
-  outputs = {
-    nixpkgs,
-    flake-utils,
-    ...
-  }:
+  outputs =
+    {
+      nixpkgs,
+      flake-utils,
+      ...
+    }:
     flake-utils.lib.eachDefaultSystem (
-      system: let
+      system:
+      let
         pkgs = import nixpkgs {
           inherit system;
           overlays = [
           ];
           config.allowUnfree = true;
         };
-        customRC = import ./config {inherit pkgs;};
+        customRC = import ./config { inherit pkgs; };
         neovimWrapped = pkgs.wrapNeovim pkgs.neovim-unwrapped {
           configure = {
             inherit customRC;
             packages.myVimPackage = with pkgs.vimPlugins; {
               start = [
-                nvim-treesitter.withAllGrammars
-                nvim-treesitter-textobjects
-                lz-n
                 base16-nvim
                 copilot-vim
                 fzf-vim
+                nvim-lspconfig
+                gitsigns-nvim
+                cmp-nvim-lsp
+                cmp-path
+                cmp-nvim-lsp-signature-help
                 guess-indent-nvim
                 haskell-tools-nvim
                 hop-nvim
+                nvim-cmp
                 idris-vim
                 kommentary
+                lz-n
+                nvim-treesitter-textobjects
+                nvim-treesitter.withAllGrammars
                 nvim-ts-context-commentstring
+                ranger-vim
                 telescope-fzf-native-nvim
+                ultisnips
                 ultisnips
                 vim-dispatch
                 vim-dispatch-neovim
                 vim-swap
-                gitsigns-nvim
                 vimwiki
-                ranger-vim
                 which-key-nvim
-                ultisnips
               ];
               opt = [
                 gitsigns-nvim
@@ -490,7 +497,8 @@
           text = ''
             ${neovimWrapped}/bin/nvim "$@"
           '';
-          runtimeInputs = with pkgs;
+          runtimeInputs =
+            with pkgs;
             [
               # file utilities
               git
@@ -515,7 +523,8 @@
             ]
             ++ vimPlugins.nvim-treesitter.withAllGrammars.dependencies;
         };
-      in {
+      in
+      {
         packages = {
           default = app;
         };

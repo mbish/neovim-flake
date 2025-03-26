@@ -10,5 +10,6 @@
   };
 in ''
   set rtp+=${configDir}
+  let g:snippet_path = "${../snippets}"
   source ${configDir}/init.lua
 ''
