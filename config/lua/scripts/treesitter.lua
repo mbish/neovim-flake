@@ -3,8 +3,11 @@ local textobjects = {
         enable = true,
         lookahead = true,
         keymaps = {
-            ["af"] = "@function.outer",
-            ["if"] = "@function.inner",
+            ["af"] = { query = "@function.outer", desc = "Select all of function" },
+            ["if"] = { query = "@function.inner", desc = "Select inner function" },
+            ["ac"] = { query = "@class.outer", desc = "Select all of class" },
+            ["ic"] = { query = "@class.inner", desc = "Select inner of class" },
+
         }
     }
 }
