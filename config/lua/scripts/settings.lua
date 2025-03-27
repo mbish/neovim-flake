@@ -5,7 +5,8 @@ vim.cmd("autocmd!")
 o.autoread = true
 o.autowrite = true
 o.backspace="indent,eol,start"
-o.clipboard="unnamedplus"
+o.background = "dark"
+o.clipboard="unnamed"
 o.completeopt="menuone"
 o.conceallevel=2
 o.directory="/tmp"
