@@ -1,3 +1,4 @@
+vim.cmd [[autocmd! CursorHold,CursorHoldI * lua vim.diagnostic.open_float(nil, {focus=false, scope="cursor", source="always"})]]
 return {
     {
         "scripts.lsp.pyright",
