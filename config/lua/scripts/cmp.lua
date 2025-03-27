@@ -17,12 +17,20 @@ local mappings = function(cmp, select_opts)
         ["<c-p>"] = cmp.mapping.select_prev_item(select_opts),
         ["<c-n>"] = cmp.mapping.select_next_item(select_opts),
         ["<c-e>"] = cmp.mapping.abort(),
-        ['<c-d>'] = cmp.mapping.confirm({ select = true }),
+        ["'"] = cmp.mapping.confirm({ select = true }),
     }
 end
+
+snippet = {
+    expand = function(args)
+        vim.fn["vsnip#anonymous"](args.body) -- For `vsnip` users.
+        vim.fn["UltiSnips#Anon"](args.body) -- For `ultisnips` users.
+    end,
+}
 
 cmp.setup {
   completion = completion,
   sources = sources,
+  snippet = snippet,
   mapping = cmp.mapping.preset.insert(mappings(cmp, select_opts)),
 }

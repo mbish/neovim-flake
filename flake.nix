@@ -447,6 +447,7 @@
                 copilot-vim
                 fzf-vim
                 nvim-lspconfig
+                vim-sleuth
                 gitsigns-nvim
                 cmp-nvim-lsp
                 cmp-path
@@ -470,6 +471,7 @@
                 vim-swap
                 vimwiki
                 which-key-nvim
+                cyberdream-nvim
               ];
               opt = [
                 gitsigns-nvim

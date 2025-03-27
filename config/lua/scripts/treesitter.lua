@@ -6,7 +6,7 @@ require("nvim-treesitter.configs").setup({
         -- disable = table/function
         additional_vim_regex_highlighting = true,
     },
-    indent = { enable = true },
+    indent = { enable = false },
 
     playground = {
         enable = true,
@@ -14,9 +14,6 @@ require("nvim-treesitter.configs").setup({
         updatetime = 25,
         persist_queries = false,
         keybindings = {},
-    },
-    indent = {
-        enable = true,
     },
 })
 

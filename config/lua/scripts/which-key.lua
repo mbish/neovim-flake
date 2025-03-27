@@ -5,7 +5,11 @@ local setup = function()
     })
 end
 
-opts = {}
+opts = {
+    icons = {
+        mappings = false,
+    },
+}
 keys = {
     {
       "<leader>",

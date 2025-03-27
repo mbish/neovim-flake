@@ -2,7 +2,6 @@ local o = vim.opt
 
 o.compatible = false
 vim.cmd("autocmd!")
-o.autoindent = true
 o.autoread = true
 o.autowrite = true
 o.backspace="indent,eol,start"
@@ -33,9 +32,10 @@ o.updatetime = 500
 o.wildmode = "list:longest,full"
 o.modeline = false
 o.signcolumn = "yes"
+o.smartindent = false
 
 vim.cmd([[
     filetype plugin on
 ]])
 
-vim.cmd.colorscheme("slate")
+vim.cmd.colorscheme("cyberdream")
