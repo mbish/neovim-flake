@@ -1,3 +1,14 @@
+local textobjects = {
+    select = {
+        enable = true,
+        lookahead = true,
+        keymaps = {
+            ["af"] = "@function.outer",
+            ["if"] = "@function.inner",
+        }
+    }
+}
+
 require("nvim-treesitter.configs").setup({
     sync_install = false,
     auto_install = false,
@@ -15,6 +26,7 @@ require("nvim-treesitter.configs").setup({
         persist_queries = false,
         keybindings = {},
     },
+    textobjects = textobjects,
 })
 
 require('ts_context_commentstring').setup {}
