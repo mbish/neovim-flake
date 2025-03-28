@@ -27,7 +27,7 @@ end
 
 
 
-TrimAndCopy = function()
+local trimAndCopy = function()
   -- Yank the visual selection
   api.nvim_command('normal! y')
 
@@ -43,4 +43,4 @@ TrimAndCopy = function()
 end
 
 -- Map the function to Ctrl + c in visual mode
-vim.keymap.set('v', 'Y', TrimAndCopy, { silent = true })
+vim.keymap.set('v', 'Y', trimAndCopy, { silent = true })
