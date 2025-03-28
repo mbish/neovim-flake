@@ -28,52 +28,52 @@
             packages.myVimPackage = with pkgs.vimPlugins; {
               start = [
                 base16-nvim
-                copilot-vim
-                fzf-vim
-                nvim-lspconfig
-                vim-sleuth
-                gitsigns-nvim
                 cmp-nvim-lsp
-                cmp-path
                 cmp-nvim-lsp-signature-help
+                cmp-nvim-ultisnips
+                cmp-path
+                copilot-vim
+                cyberdream-nvim
+                fzf-vim
+                gitsigns-nvim
                 guess-indent-nvim
                 haskell-tools-nvim
                 hop-nvim
-                nvim-cmp
                 idris-vim
                 kommentary
                 lz-n
+                nvim-cmp
+                nvim-lspconfig
                 nvim-treesitter-textobjects
                 nvim-treesitter.withAllGrammars
                 nvim-ts-context-commentstring
                 ranger-vim
                 telescope-fzf-native-nvim
                 ultisnips
-                ultisnips
                 vim-dispatch
                 vim-dispatch-neovim
+                vim-sleuth
                 vim-swap
                 vimwiki
                 which-key-nvim
-                cyberdream-nvim
               ];
               opt = [
-                gitsigns-nvim
-                vim-startuptime
-                telescope-nvim
-                symbols-outline-nvim
-                nvim-lint
+                bufferline-nvim
                 conform-nvim
-                nvim-surround
                 fugitive
-                vim-markdown
-                markdown-preview-nvim
-                vim-suda
-                luvit-meta
+                gitsigns-nvim
                 lazydev-nvim
                 lualine-nvim
-                bufferline-nvim
+                luvit-meta
+                markdown-preview-nvim
                 nvim-dap
+                nvim-lint
+                nvim-surround
+                symbols-outline-nvim
+                telescope-nvim
+                vim-markdown
+                vim-startuptime
+                vim-suda
               ];
             };
           };

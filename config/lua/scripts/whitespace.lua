@@ -1,3 +1,5 @@
+local api = vim.api
+
 vim.cmd ([[
     function StripTrailingWhitespace()
        " Preparation: save last search, and cursor position.
@@ -12,3 +14,33 @@ vim.cmd ([[
     endfunction
 ]])
 vim.keymap.set("n", "<leader>t", ":call StripTrailingWhitespace()<CR>", { desc = "Strip trailing whitespace", silent = true })
+
+
+function trimStartOfLines(str)
+   local lines = {}
+   for line in str:gmatch("[^\r\n]+") do
+      local trimmed = line:match("^%s*(.-)$")
+      table.insert(lines, trimmed)
+   end
+   return table.concat(lines, "\n")
+end
+
+
+
+TrimAndCopy = function()
+  -- Yank the visual selection
+  api.nvim_command('normal! y')
+
+  -- Get the yanked text
+  local yanked_text = vim.fn.getreg('"')
+
+
+  -- Trim the leading whitespace
+  local trimmed_text = trimStartOfLines(yanked_text)
+
+  -- Set the register to the trimmed text
+  vim.fn.setreg('*', trimmed_text)
+end
+
+-- Map the function to Ctrl + c in visual mode
+vim.keymap.set('v', 'Y', TrimAndCopy, { silent = true })

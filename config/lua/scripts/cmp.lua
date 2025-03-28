@@ -6,6 +6,7 @@ local sources = {
     { name = "buffer", keyword_length = 3 }, -- text within current buffer
     { name = "luasnip", keyword_length = 2 }, -- snippets
     { name = "nvim_lsp_signature_help", keyword_length = 1 }, -- snippets
+    { name = 'ultisnips' },
 }
 
 local completion = {
@@ -21,9 +22,8 @@ local mappings = function(cmp, select_opts)
     }
 end
 
-snippet = {
+local snippet = {
     expand = function(args)
-        vim.fn["vsnip#anonymous"](args.body) -- For `vsnip` users.
         vim.fn["UltiSnips#Anon"](args.body) -- For `ultisnips` users.
     end,
 }
