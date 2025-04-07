@@ -9,6 +9,8 @@ require("scripts.cmp") -- can this be lazy?
 require("scripts.copilot")
 require("scripts.ranger")
 require("scripts.treesitter")
+require("scripts.treesitter-textobjects")
+require("scripts.treesitter-context")
 require("scripts.vimwiki") -- we have to override these key mappings
 require("scripts.which-key")
 require("scripts.ultisnips")

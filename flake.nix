@@ -6,22 +6,20 @@
     };
     flake-utils.url = "github:numtide/flake-utils";
   };
-  outputs =
-    {
-      nixpkgs,
-      flake-utils,
-      ...
-    }:
+  outputs = {
+    nixpkgs,
+    flake-utils,
+    ...
+  }:
     flake-utils.lib.eachDefaultSystem (
-      system:
-      let
+      system: let
         pkgs = import nixpkgs {
           inherit system;
           overlays = [
           ];
           config.allowUnfree = true;
         };
-        customRC = import ./config { inherit pkgs; };
+        customRC = import ./config {inherit pkgs;};
         neovimWrapped = pkgs.wrapNeovim pkgs.neovim-unwrapped {
           configure = {
             inherit customRC;
@@ -44,9 +42,11 @@
                 lz-n
                 nvim-cmp
                 nvim-lspconfig
+                nvim-treesitter-context
                 nvim-treesitter-textobjects
                 nvim-treesitter.withAllGrammars
                 nvim-ts-context-commentstring
+                nvim-ts-autotag
                 ranger-vim
                 telescope-fzf-native-nvim
                 ultisnips
@@ -83,8 +83,7 @@
           text = ''
             exec ${neovimWrapped}/bin/nvim "$@"
           '';
-          runtimeInputs =
-            with pkgs;
+          runtimeInputs = with pkgs;
             [
               # file utilities
               git
@@ -109,8 +108,7 @@
             ]
             ++ vimPlugins.nvim-treesitter.withAllGrammars.dependencies;
         };
-      in
-      {
+      in {
         packages = {
           default = app;
         };
