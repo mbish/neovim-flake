@@ -5,21 +5,33 @@ local setup = function()
             stylua = {
                 prepend_args = { "--indent-type", "Spaces", "--indent-width", "4" },
             },
+            --[[ vimwiki = {
+                args = { "--prose-wrap", "always", "-w", "--parser", "markdown", "$FILENAME" },
+                command = "prettier",
+                stdin = false,
+            }, ]]
         },
         formatters_by_ft = {
             lua = { "stylua" },
             python = { "isort", "black" },
             nix = { "nixfmt" },
-            javascript = { "prettierd" },
-            javascriptreact = { "prettierd" },
-            typescript = { "prettierd" },
-            typescriptreact = { "prettierd" },
-            json = { "prettierd" },
+            javascript = { "prettier" },
+            javascriptreact = { "prettier" },
+            typescript = { "prettier" },
+            typescriptreact = { "prettier" },
+            json = { "prettier" },
+            html = { "prettier" },
+            css = { "prettier" },
+            markdown = { "prettier" },
+            -- vimwiki = { "vimwiki" },
             c = { "clang-format" },
             cpp = { "clang-format" },
             yaml = { "yamlfix" },
             go = { "gofmt" },
             rust = { "rustfmt" },
+            bash = { "shfmt" },
+            sh = { "shfmt" },
+            zsh = { "shfmt" },
         },
         format_on_save = function(bufnr)
             if vim.g.disable_autoformat or vim.b[bufnr].disable_autoformat then

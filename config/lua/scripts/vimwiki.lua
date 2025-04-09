@@ -7,6 +7,7 @@ vim.api.nvim_create_autocmd({ "BufNewFile", "BufRead" }, {
         "*.md",
     },
     callback = function (opts)
+        vim.opt_local.spell = true
         vim.keymap.set("n", "<CR>", "<cmd>VimwikiFollowLink<CR>", { buffer = true, silent = true })
         vim.keymap.set("n", "<BS>", "<cmd>VimwikiGoBackLink<CR>", { buffer = true, silent = true })
     end,

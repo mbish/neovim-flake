@@ -6,6 +6,7 @@ require("scripts.whitespace")
 -- 2. non-lazy plugins configs
 require("scripts.fzf") -- can this be lazy?
 require("scripts.cmp") -- can this be lazy?
+require("scripts.spelling") -- can this be lazy?
 require("scripts.copilot")
 require("scripts.ranger")
 require("scripts.treesitter")

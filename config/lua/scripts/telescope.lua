@@ -21,10 +21,20 @@ local keys = {
     { "<leader>fvx" , builtin.git_stash, mode="n", desc="Git Stash" }
 }
 
+local setup = function()
+  require('telescope').setup{
+    defaults = {
+      layout_strategy = 'vertical',
+      -- layout_config = { height = 0.95 },
+    },
+  }
+end
+
 local lazy = function()
     return {
         "telescope.nvim",
         keys = keys,
+        after = setup,
     }
 end
 

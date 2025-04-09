@@ -105,6 +105,7 @@
               nixfmt-rfc-style
               yamlfix
               yamllint
+              nodePackages.prettier
             ]
             ++ vimPlugins.nvim-treesitter.withAllGrammars.dependencies;
         };
