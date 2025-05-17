@@ -1,4 +1,4 @@
-vim.cmd [[autocmd! CursorHold,CursorHoldI * lua vim.diagnostic.open_float(nil, {focus=false, scope="cursor", source="always"})]]
+vim.cmd([[autocmd! CursorHold,CursorHoldI * lua vim.diagnostic.open_float(nil, {focus=false, scope="cursor", source="always"})]])
 return {
     {
         "scripts.lsp.pyright",
@@ -53,6 +53,13 @@ return {
         "scripts.lsp.rust_analyzer",
         load = function()
             require("scripts.lsp.rust_analyzer")
+        end,
+        ft = "rust",
+    },
+    {
+        "scripts.lsp.rust_tools",
+        load = function()
+            require("scripts.lsp.rust_tools")
         end,
         ft = "rust",
     },

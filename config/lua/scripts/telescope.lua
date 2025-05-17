@@ -18,7 +18,8 @@ local keys = {
     { "<leader>fs" , builtin.treesitter, mode="n", desc = "Treesitter" },
     { "<leader>fvb" , builtin.git_branches, mode="n", desc = "Git Branches" },
     { "<leader>fvs" , builtin.git_status, mode="n", desc = "Git Status" },
-    { "<leader>fvx" , builtin.git_stash, mode="n", desc="Git Stash" }
+    { "<leader>fvx" , builtin.git_stash, mode="n", desc="Git Stash" },
+    { "<leader>k" , builtin.grep_string, mode="n", desc="Grep string under the cursor" }
 }
 
 local setup = function()

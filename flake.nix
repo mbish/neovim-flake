@@ -31,6 +31,7 @@
                 cmp-nvim-ultisnips
                 cmp-path
                 copilot-vim
+                crates-nvim
                 cyberdream-nvim
                 fzf-vim
                 gitsigns-nvim
@@ -45,9 +46,10 @@
                 nvim-treesitter-context
                 nvim-treesitter-textobjects
                 nvim-treesitter.withAllGrammars
-                nvim-ts-context-commentstring
                 nvim-ts-autotag
+                nvim-ts-context-commentstring
                 ranger-vim
+                rust-tools-nvim
                 telescope-fzf-native-nvim
                 ultisnips
                 vim-dispatch
