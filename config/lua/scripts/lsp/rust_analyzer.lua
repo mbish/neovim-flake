@@ -2,16 +2,16 @@ local lspconfig = require("lspconfig")
 local lsp_capabilities = require("cmp_nvim_lsp").default_capabilities()
 local settings = {
     ["rust-analyzer"] = {
-        checkOnSave = {
-            command = "clippy",
-            extraArgs = {
-                "--",
-                "--no-deps",
-                "-Dclippy::correctness",
-                "-Dclippy::complexity",
-                "-Wclippy::perf",
-                "-Wclippy::pedantic",
-            },
+        checkOnSave = true,
+        command = "cargo",
+        extraArgs = {
+            "clippy",
+            "--",
+            "--no-deps",
+            "-Dclippy::correctness",
+            "-Dclippy::complexity",
+            "-Wclippy::perf",
+            "-Wclippy::pedantic",
         },
         cargo = {
             allFeatures = true,
