@@ -52,6 +52,8 @@ rt.setup({
                 { buffer = bufnr },
                 { desc = "Code actions" }
             )
+            -- Documentation Lookup
+            vim.opt.keywordprog="rusty-man"
         end,
         settings = settings,
     },

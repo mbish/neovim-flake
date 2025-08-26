@@ -34,6 +34,7 @@ o.wildmode = "list:longest,full"
 o.modeline = false
 o.signcolumn = "yes"
 o.smartindent = false
+o.winborder = 'rounded' -- or 'single', 'double', 'solid', 'shadow'
 
 vim.cmd([[
     filetype plugin on
