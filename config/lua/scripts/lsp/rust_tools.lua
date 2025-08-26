@@ -1,4 +1,5 @@
 local rt = require("rust-tools")
+local lsp_capabilities = require("cmp_nvim_lsp").default_capabilities()
 local settings = {
     ["rust-analyzer"] = {
         checkOnSave = true,
@@ -52,10 +53,9 @@ rt.setup({
                 { buffer = bufnr },
                 { desc = "Code actions" }
             )
-            -- Documentation Lookup
-            vim.opt.keywordprog="rusty-man"
         end,
         settings = settings,
+        capabilities = lsp_capabilities,
     },
     tools = {
         autoSetHints = true,

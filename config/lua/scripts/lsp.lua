@@ -49,13 +49,13 @@ return {
         end,
         ft = "lua",
     },
-    {
+    --[[ {
         "scripts.lsp.rust_analyzer",
         load = function()
             require("scripts.lsp.rust_analyzer")
         end,
         ft = "rust",
-    },
+    }, ]]
     {
         "scripts.lsp.rust_tools",
         load = function()
