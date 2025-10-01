@@ -12,3 +12,6 @@ vim.keymap.set("n", "<leader>x" , "<cmd>wqa<CR>", { desc = "Write all and exit" 
 vim.keymap.set("n", "<leader>yf" , "<cmd>let @* = expand('%')<CR>", { desc = "Copy file path to clipboard" })
 vim.keymap.set("n", "=", "<CMD>bn<CR>", { remap = false, desc = "Next buffer" } )
 vim.keymap.set("n", "c/" , ":nohlsearch<CR>", { desc = "Clear search highlight" })
+vim.keymap.set("n", "<leader>lr" , function()
+    vim.lsp.buf.rename()
+end, { desc = "Rename symbol" })

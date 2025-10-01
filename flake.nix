@@ -58,6 +58,7 @@
                 vim-dispatch-neovim
                 vim-sleuth
                 vim-swap
+                vim-rhubarb
                 vimwiki
                 which-key-nvim
               ];
@@ -78,6 +79,18 @@
                 vim-markdown
                 vim-startuptime
                 vim-suda
+              ];
+            };
+          };
+        };
+        minimalNeovim = pkgs.wrapNeovim pkgs.neovim-unwrapped {
+          configure = {
+            inherit customRC;
+            packages.myVimPackage = with pkgs.vimPlugins; {
+              start = [
+                hop-nvim
+              ];
+              opt = [
               ];
             };
           };
@@ -118,11 +131,16 @@
       {
         packages = {
           default = app;
+          minimal = minimalNeovim;
         };
         apps = {
           default = {
             type = "app";
             program = "${app}/bin/nvim";
+          };
+          minimal = {
+            type = "app";
+            program = "${minimalNeovim}/bin/nvim";
           };
         };
       }

@@ -4,19 +4,19 @@ o.compatible = false
 vim.cmd("autocmd!")
 o.autoread = true
 o.autowrite = true
-o.backspace="indent,eol,start"
+o.backspace = "indent,eol,start"
 o.background = "dark"
-o.clipboard="unnamed"
-o.completeopt="menuone"
-o.conceallevel=2
-o.directory="/tmp"
+o.clipboard = "unnamed"
+o.completeopt = "menuone"
+o.conceallevel = 2
+o.directory = "/tmp"
 o.expandtab = true
 o.fillchars = "vert:│"
 o.hidden = true
-o.history= 50
+o.history = 50
 o.hlsearch = true
 o.incsearch = true
-o.laststatus= 2
+o.laststatus = 2
 o.mouse = "a"
 o.showmode = true
 o.swapfile = false
@@ -34,7 +34,7 @@ o.wildmode = "list:longest,full"
 o.modeline = false
 o.signcolumn = "yes"
 o.smartindent = false
-o.winborder = 'rounded' -- or 'single', 'double', 'solid', 'shadow'
+o.winborder = "single"
 
 vim.cmd([[
     filetype plugin on
