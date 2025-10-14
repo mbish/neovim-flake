@@ -18,6 +18,7 @@ require("scripts.ultisnips")
 require("scripts.gitsigns-all") -- can this be lazy?
 require("scripts.leap")
 require("scripts.test-vim")
+-- require("scripts.lsp.rustaceanvim")
 
 -- 3. lazy configs and tweaks
 require("scripts.lz-n")

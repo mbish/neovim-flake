@@ -1,3 +1,6 @@
+local wk = require("which-key")
+local bufnr = vim.api.nvim_get_current_buf()
+
 vim.g.mapleader = " "
 vim.g.maplocalleader = ","
 
@@ -16,3 +19,39 @@ vim.keymap.set("n", "<leader>lr", function()
     vim.lsp.buf.rename()
 end, { desc = "Rename symbol" })
 vim.keymap.set("n", "s", "<Plug>(leap)", { desc = "Leap to char", remap = false })
+
+wk.add({
+    {
+        "<leader>ca",
+        function()
+            vim.cmd.RustLsp("codeAction")
+        end,
+        mode = "n",
+        buffer = bufnr,
+        desc = "Code actions",
+    },
+})
+
+wk.add({
+    {
+        "<leader>ce",
+        function()
+            vim.cmd.RustLsp("explainError")
+        end,
+        mode = "n",
+        buffer = bufnr,
+        desc = "Explain Error",
+    },
+})
+
+wk.add({
+    {
+        "<leader>cd",
+        function()
+            vim.cmd.RustLsp("relatedDiagnostics")
+        end,
+        mode = "n",
+        buffer = bufnr,
+        desc = "Related Diagnostics",
+    },
+})

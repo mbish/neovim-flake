@@ -4,6 +4,7 @@ local setup = function()
       { "<leader>t", group = "Test" },
       { "<leader>u", group = "Utilities" },
       { "<leader>a", group = "Auto-action settings" },
+      { "<leader>c", group = "LSP Commands" },
     })
 end
 
