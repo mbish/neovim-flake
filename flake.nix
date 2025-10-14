@@ -39,7 +39,7 @@
                 gitsigns-nvim
                 guess-indent-nvim
                 haskell-tools-nvim
-                hop-nvim
+                leap-nvim
                 idris-vim
                 kommentary
                 lz-n
@@ -61,6 +61,7 @@
                 vim-rhubarb
                 vimwiki
                 which-key-nvim
+                vim-test
               ];
               opt = [
                 bufferline-nvim
@@ -88,7 +89,7 @@
             inherit customRC;
             packages.myVimPackage = with pkgs.vimPlugins; {
               start = [
-                hop-nvim
+                leap-nvim
               ];
               opt = [
               ];

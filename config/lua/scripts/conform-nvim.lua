@@ -6,9 +6,17 @@ local setup = function()
                 prepend_args = { "--indent-type", "Spaces", "--indent-width", "4" },
             },
             cargo_fmt = {
-                command = "carg",
-                args = { "fmt" }
-            }
+                command = "cargo",
+                args = { "fmt" },
+            },
+            qmkfmt = {
+                command = "qmkfmt",
+                arg = { "$FILENAME" },
+                condition = function(self, ctx)
+                    return vim.fs.basename(ctx.filename) == "keymap.c"
+                end,
+                inherit = false,
+            },
             --[[ vimwiki = {
                 args = { "--prose-wrap", "always", "-w", "--parser", "markdown", "$FILENAME" },
                 command = "prettier",
@@ -28,7 +36,7 @@ local setup = function()
             css = { "prettier" },
             markdown = { "prettier" },
             -- vimwiki = { "vimwiki" },
-            c = { "clang-format" },
+            c = { "qmkfmt", "clang-format", stop_after_first = true },
             cpp = { "clang-format" },
             yaml = { "yamlfix" },
             go = { "gofmt" },
@@ -39,13 +47,13 @@ local setup = function()
         },
         format_on_save = function(bufnr)
             if vim.g.disable_autoformat or vim.b[bufnr].disable_autoformat then
-              return
+                return
             end
             return {
                 lsp_format = "fallback",
-                timeout_ms = 500,
+                timeout_ms = 1000,
             }
-        end
+        end,
     })
 end
 
@@ -57,7 +65,7 @@ local keys = {
                 bufnr = vim.api.nvim_get_current_buf(),
             })
         end,
-        desc = "Format buffer"
+        desc = "Format buffer",
     },
 }
 

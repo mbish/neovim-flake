@@ -7,7 +7,6 @@ require("lz.n").load({
     require("scripts.bufferline").lazy(),
     require("scripts.lualine").lazy(),
     require("scripts.nvim-surround").lazy(),
-    require("scripts.hop").lazy(),
     require("scripts.gitsigns").lazy(),
     require("scripts.conform-nvim").lazy(),
 })

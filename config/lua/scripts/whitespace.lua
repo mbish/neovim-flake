@@ -15,7 +15,7 @@ vim.cmd([[
 ]])
 vim.keymap.set(
     "n",
-    "<leader>t",
+    "<leader>ut",
     ":call StripTrailingWhitespace()<CR>",
     { desc = "Strip trailing whitespace", silent = true }
 )

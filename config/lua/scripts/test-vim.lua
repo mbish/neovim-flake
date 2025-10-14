@@ -1,0 +1,5 @@
+vim.keymap.set("n", "<leader>tn", "<cmd>TestNearest<CR>", { desc = "Run test closest to cursor", remap = false })
+vim.keymap.set("n", "<leader>tf", "<cmd>TestFile<CR>", { desc = "Run all files in test", remap = false })
+vim.keymap.set("n", "<leader>ts", "<cmd>TestSuite<CR>", { desc = "Run test suite under cursor", remap = false })
+vim.keymap.set("n", "<leader>tl", "<cmd>TestLast<CR>", { desc = "Run last test", remap = false })
+vim.keymap.set("n", "<leader>tv", "<cmd>TestVisit<CR>", { desc = "Visit last test", remap = false })

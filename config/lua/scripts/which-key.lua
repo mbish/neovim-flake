@@ -1,6 +1,8 @@
 local setup = function()
     require("which-key").add({
       { "<leader>f", group = "Find" },
+      { "<leader>t", group = "Test" },
+      { "<leader>u", group = "Utilities" },
       { "<leader>a", group = "Auto-action settings" },
     })
 end
