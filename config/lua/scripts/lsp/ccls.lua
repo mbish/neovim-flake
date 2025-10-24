@@ -1,6 +1,4 @@
-local lspconfig = require("lspconfig")
-
-lspconfig.ccls.setup({
+vim.lsp.config("ccls", {
     init_options = {
         compilationDatabaseDirectory = "build",
         index = {

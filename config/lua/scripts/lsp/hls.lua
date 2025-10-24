@@ -1,7 +1,6 @@
-local lspconfig = require("lspconfig")
 local lsp_capabilities = require("cmp_nvim_lsp").default_capabilities()
 
-lspconfig.hls.setup({
+vim.lsp.config("hls", {
     capabilities = lsp_capabilities,
     on_attach = function(client, bufnr, ht)
         local opts = { noremap = true, silent = true, buffer = bufnr }

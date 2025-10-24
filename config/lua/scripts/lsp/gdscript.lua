@@ -1,7 +1,5 @@
-local lspconfig = require("lspconfig")
 local lsp_capabilities = require("cmp_nvim_lsp").default_capabilities()
 
-lspconfig.gdscript.setup({
+vim.lsp.config("gdscript", {
     capabilities = lsp_capabilities,
 })
-

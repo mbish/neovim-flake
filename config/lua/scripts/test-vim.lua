@@ -3,3 +3,8 @@ vim.keymap.set("n", "<leader>tf", "<cmd>TestFile<CR>", { desc = "Run all files i
 vim.keymap.set("n", "<leader>ts", "<cmd>TestSuite<CR>", { desc = "Run test suite under cursor", remap = false })
 vim.keymap.set("n", "<leader>tl", "<cmd>TestLast<CR>", { desc = "Run last test", remap = false })
 vim.keymap.set("n", "<leader>tv", "<cmd>TestVisit<CR>", { desc = "Visit last test", remap = false })
+
+vim.g["test#rust#cargonextest#test_patterns"] = {
+    test = { "\\v(#\\[%(\\w+::|rs)?test)" },
+    namespace = { "\vmod (tests?)" },
+}
