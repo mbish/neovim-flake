@@ -10,3 +10,4 @@ vim.lsp.config("hls", {
     cmd = { "haskell-language-server-wrapper", "--lsp", "-j", "2" },
     root_dir = lspconfig.util.root_pattern("hie.yaml", "stack.yaml", ".cabal", "cabal.project", "project.yaml"),
 })
+vim.lsp.enable("hls")

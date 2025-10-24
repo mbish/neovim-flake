@@ -5,3 +5,4 @@ vim.lsp.config("ts_ls", {
     cmd = { "typescript-language-server", "--stdio" },
     capabilities = lsp_capabilities,
 })
+vim.lsp.enable("ts_ls")
