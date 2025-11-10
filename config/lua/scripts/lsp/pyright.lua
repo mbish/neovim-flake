@@ -1,20 +1,8 @@
 local lsp_capabilities = require("cmp_nvim_lsp").default_capabilities()
-local util = require("lspconfig.util")
-
-local root_files = {
-    "pyrightconfig.json",
-}
 
 vim.lsp.config("pyright", {
     cmd = { "pyright-langserver", "--stdio" },
     capabilities = lsp_capabilities,
-    root_dir = function(fname)
-        return (
-            util.root_pattern(unpack(root_files))(fname)
-            or util.find_git_ancestor(fname)
-            or util.path.dirname(fname)
-        )
-    end,
     settings = {
         python = {
             analysis = {
