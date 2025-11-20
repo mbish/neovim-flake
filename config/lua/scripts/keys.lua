@@ -18,7 +18,8 @@ vim.keymap.set("n", "c/", ":nohlsearch<CR>", { desc = "Clear search highlight" }
 vim.keymap.set("n", "<leader>lr", function()
     vim.lsp.buf.rename()
 end, { desc = "Rename symbol" })
-vim.keymap.set("n", "s", "<Plug>(leap)", { desc = "Leap to char", remap = false })
+vim.keymap.set({"n", "v"}, "s", "<Plug>(leap)", { desc = "Leap to char", remap = false })
+vim.keymap.set("n", "S", "<Plug>(leap-anywhere)", { desc = "Leap across windows", remap = false })
 vim.keymap.set("n", "<A-l>", "<CMD>wincmd l<CR>", { desc = "Jump right window", remap = false })
 vim.keymap.set("n", "<A-j>", "<CMD>wincmd j<CR>", { desc = "Jump down window", remap = false })
 vim.keymap.set("n", "ï", "<CMD>wincmd j<CR>", { desc = "Jump down window", remap = false })
@@ -32,6 +33,12 @@ vim.keymap.set("n", "®", "<CMD>vs<CR>", { desc = "Create vertical window split"
 vim.keymap.set("n", "ß", "<CMD>split<CR>", { desc = "Create horizontal window split", remap = false })
 vim.keymap.set("n", "ä", "<CMD>wincmd q<CR>", { desc = "Quit window", remap = false })
 vim.keymap.set("n", "<A-m>", "<CMD>wincmd q<CR>", { desc = "Quit window", remap = false })
+vim.keymap.set("n", "<Leader>*", function()
+    local word = vim.fn.expand("<cword>")
+    vim.cmd("match LspReferenceTarget '" .. word .. "'")
+end, { desc = "Highlight all occurrences of word under cursor" })
+vim.keymap.set("n", "<leader>/", "<CMD>match<CR>", { desc = "Clear highlight" })
+
 
 wk.add({
     {

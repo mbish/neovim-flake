@@ -75,7 +75,7 @@
                 nvim-dap
                 nvim-lint
                 nvim-surround
-                symbols-outline-nvim
+                outline-nvim
                 telescope-nvim
                 vim-markdown
                 vim-startuptime
