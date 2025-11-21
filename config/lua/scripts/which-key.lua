@@ -15,13 +15,6 @@ opts = {
 }
 keys = {
     {
-      "<leader>",
-      function()
-        require("which-key").show({ keys = "<leader>", global = true })
-      end,
-      desc = "Show leader keymaps"
-    },
-    {
       "<leader>?",
       function()
         require("which-key").show({ global = true })
