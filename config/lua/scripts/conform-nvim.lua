@@ -5,10 +5,6 @@ local setup = function()
             stylua = {
                 prepend_args = { "--indent-type", "Spaces", "--indent-width", "4" },
             },
-            cargo_fmt = {
-                command = "cargo",
-                args = { "fmt" },
-            },
             qmkfmt = {
                 command = "qmkfmt",
                 arg = { "$FILENAME" },
@@ -40,7 +36,7 @@ local setup = function()
             cpp = { "clang-format" },
             yaml = { "yamlfix" },
             go = { "gofmt" },
-            rust = { "cargo_fmt" },
+            rust = { "rustfmt" },
             bash = { "shfmt" },
             sh = { "shfmt" },
             zsh = { "shfmt" },

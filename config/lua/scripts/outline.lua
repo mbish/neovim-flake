@@ -6,7 +6,7 @@ local opts = {
         icon_fetcher = function() return "" end,
     },
     symbol_folding = {
-        markers = { "+", "-sh ~/src/ZT-trustedshell/bin/poetryInstall.sh" },
+        markers = { "+", "-" },
     }
 }
 
