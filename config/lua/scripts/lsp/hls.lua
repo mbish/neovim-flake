@@ -8,6 +8,6 @@ vim.lsp.config("hls", {
         vim.keymap.set("n", "<leader>hs", ht.hoogle.hoogle_signature, opts)
     end,
     cmd = { "haskell-language-server-wrapper", "--lsp", "-j", "2" },
-    root_dir = lspconfig.util.root_pattern("hie.yaml", "stack.yaml", ".cabal", "cabal.project", "project.yaml"),
+    root_markers = { { 'hie.yaml', 'stack.yaml', '.cabal', 'cabal.project', 'project.yaml' }, '.git' },
 })
 vim.lsp.enable("hls")
