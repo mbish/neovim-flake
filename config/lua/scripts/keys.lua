@@ -38,6 +38,8 @@ vim.keymap.set("n", "<Leader>*", function()
     vim.cmd("match LspReferenceTarget '" .. word .. "'")
 end, { desc = "Highlight all occurrences of word under cursor" })
 vim.keymap.set("n", "<leader>/", "<CMD>match<CR>", { desc = "Clear highlight" })
+vim.keymap.set("n", "<Leader>sad", "<CMD>Copilot disable<CR>", { desc = "Disable Copilot" })
+vim.keymap.set("n", "<Leader>sae", "<CMD>Copilot enable<CR>", { desc = "Enable Copilot" })
 
 
 wk.add({

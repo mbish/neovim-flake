@@ -18,7 +18,7 @@ local mappings = function(cmp, select_opts)
         ["<c-p>"] = cmp.mapping.select_prev_item(select_opts),
         ["<c-n>"] = cmp.mapping.select_next_item(select_opts),
         ["<c-e>"] = cmp.mapping.abort(),
-        ["'"] = cmp.mapping.confirm({ select = true }),
+        ["<c-l>"] = cmp.mapping.confirm({ select = true }),
     }
 end
 
