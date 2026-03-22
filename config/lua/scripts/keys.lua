@@ -40,40 +40,6 @@ end, { desc = "Highlight all occurrences of word under cursor" })
 vim.keymap.set("n", "<leader>/", "<CMD>match<CR>", { desc = "Clear highlight" })
 vim.keymap.set("n", "<Leader>sad", "<CMD>Copilot disable<CR>", { desc = "Disable Copilot" })
 vim.keymap.set("n", "<Leader>sae", "<CMD>Copilot enable<CR>", { desc = "Enable Copilot" })
-
-
-wk.add({
-    {
-        "<leader>ca",
-        function()
-            vim.cmd.RustLsp("codeAction")
-        end,
-        mode = "n",
-        buffer = bufnr,
-        desc = "Code actions",
-    },
-})
-
-wk.add({
-    {
-        "<leader>ce",
-        function()
-            vim.cmd.RustLsp("explainError")
-        end,
-        mode = "n",
-        buffer = bufnr,
-        desc = "Explain Error",
-    },
-})
-
-wk.add({
-    {
-        "<leader>cd",
-        function()
-            vim.cmd.RustLsp("relatedDiagnostics")
-        end,
-        mode = "n",
-        buffer = bufnr,
-        desc = "Related Diagnostics",
-    },
-})
+vim.keymap.set("n", "<leader>ca", "<CMD>RustLsp codeAction<CR>",  { desc = "Code actions", buffer = bufnr })
+vim.keymap.set("n", "<leader>ce", "<CMD>RustLsp explainError<CR>",  { desc = "Explain Error", buffer = bufnr })
+vim.keymap.set("n", "<leader>cd", "<CMD>RustLsp relatedDiagnostics<CR>",  { desc = "Related Diagnostics", buffer = bufnr })
