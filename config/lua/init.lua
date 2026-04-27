@@ -1,4 +1,5 @@
 -- 1. base configuration
+require("scripts.cyberdream")
 require("scripts.settings")
 require("scripts.keys")
 require("scripts.whitespace")
@@ -12,7 +13,6 @@ require("scripts.ranger")
 require("scripts.treesitter")
 require("scripts.treesitter-textobjects")
 require("scripts.treesitter-context")
-require("scripts.vimwiki") -- we have to override these key mappings
 require("scripts.which-key")
 require("scripts.ultisnips")
 require("scripts.gitsigns-all") -- can this be lazy?

@@ -21,6 +21,24 @@
           ];
           config.allowUnfree = true;
         };
+        nvim-treesitter-custom-grammars = (
+          pkgs.vimPlugins.nvim-treesitter.withPlugins (p: [
+            p.lua
+            p.nix
+            p.rust
+            p.haskell
+            p.python
+            p.javascript
+            p.typescript
+            p.html
+            p.css
+            p.json
+            p.yaml
+            p.toml
+            p.bash
+            p.markdown
+          ])
+        );
         customRC = import ./config { inherit pkgs; };
         neovimWrapped = pkgs.wrapNeovim pkgs.neovim-unwrapped {
           configure = {
@@ -41,14 +59,13 @@
                 haskell-tools-nvim
                 leap-nvim
                 idris-vim
-                kommentary
                 lz-n
                 nvim-cmp
                 nvim-lspconfig
                 rustaceanvim
                 nvim-treesitter-context
                 nvim-treesitter-textobjects
-                nvim-treesitter.withAllGrammars
+                nvim-treesitter-custom-grammars
                 nvim-ts-autotag
                 nvim-ts-context-commentstring
                 ranger-vim
@@ -59,11 +76,12 @@
                 vim-sleuth
                 vim-swap
                 vim-rhubarb
-                vimwiki
                 which-key-nvim
                 vim-test
               ];
               opt = [
+                kommentary
+                vimwiki
                 bufferline-nvim
                 conform-nvim
                 fugitive

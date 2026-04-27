@@ -1,3 +1,5 @@
+vim.loader.enable()
+
 local o = vim.opt
 
 o.compatible = false
