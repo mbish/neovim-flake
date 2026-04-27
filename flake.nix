@@ -39,7 +39,8 @@
             p.markdown
           ])
         );
-        customRC = import ./config { inherit pkgs; };
+        python3WithPynvim = pkgs.python3.withPackages (ps: [ ps.pynvim ]);
+        customRC = import ./config { inherit pkgs; python3 = python3WithPynvim; };
         neovimWrapped = pkgs.wrapNeovim pkgs.neovim-unwrapped {
           configure = {
             inherit customRC;
