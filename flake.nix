@@ -144,6 +144,14 @@
             program = "${minimalNeovim}/bin/nvim";
           };
         };
+        overlays = {
+          default = final: prev: {
+            neovim = app;
+          };
+          minimal = final: prev: {
+            neovim = minimalNeovim;
+          };
+        };
       }
     );
 }
