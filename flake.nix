@@ -40,7 +40,10 @@
           ])
         );
         python3WithPynvim = pkgs.python3.withPackages (ps: [ ps.pynvim ]);
-        customRC = import ./config { inherit pkgs; python3 = python3WithPynvim; };
+        customRC = import ./config {
+          inherit pkgs;
+          python3 = python3WithPynvim;
+        };
         neovimWrapped = pkgs.wrapNeovim pkgs.neovim-unwrapped {
           configure = {
             inherit customRC;
@@ -55,38 +58,36 @@
                 crates-nvim
                 cyberdream-nvim
                 fzf-vim
-                gitsigns-nvim
                 guess-indent-nvim
                 haskell-tools-nvim
-                leap-nvim
                 idris-vim
+                leap-nvim
                 lz-n
                 nvim-cmp
                 nvim-lspconfig
-                rustaceanvim
                 nvim-treesitter-context
-                nvim-treesitter-textobjects
                 nvim-treesitter-custom-grammars
+                nvim-treesitter-textobjects
                 nvim-ts-autotag
                 nvim-ts-context-commentstring
                 ranger-vim
+                rustaceanvim
                 telescope-fzf-native-nvim
                 ultisnips
                 vim-dispatch
                 vim-dispatch-neovim
+                vim-rhubarb
                 vim-sleuth
                 vim-swap
-                vim-rhubarb
-                which-key-nvim
                 vim-test
+                which-key-nvim
               ];
               opt = [
-                kommentary
-                vimwiki
                 bufferline-nvim
                 conform-nvim
                 fugitive
                 gitsigns-nvim
+                kommentary
                 lazydev-nvim
                 lualine-nvim
                 luvit-meta
@@ -99,6 +100,7 @@
                 vim-markdown
                 vim-startuptime
                 vim-suda
+                vimwiki
               ];
             };
           };

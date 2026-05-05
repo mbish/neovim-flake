@@ -11,6 +11,5 @@
 in ''
   set rtp+=${configDir}
   let g:snippet_path = "${../snippets}"
-  let g:python3_host_prog = "${python3}/bin/python3"
   source ${configDir}/init.lua
 ''

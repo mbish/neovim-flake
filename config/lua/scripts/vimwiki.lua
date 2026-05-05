@@ -1,6 +1,5 @@
+vim.g.vimwiki_key_mappings = { all_maps = 0 }
 local setup = function()
-    vim.g.vimwiki_key_mappings = { all_maps = 0 }
-
     vim.api.nvim_create_autocmd({ "BufNewFile", "BufRead" }, {
         pattern = {
             "*.wiki",

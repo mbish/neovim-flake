@@ -8,16 +8,8 @@ vim.g.rustaceanvim = {
             ["rust-analyzer"] = {
                 checkOnSave = true,
                 check = {
-                    command = "cargo",
-                    extraArgs = {
-                        "clippy",
-                        "--",
-                        "--no-deps",
-                        "-Dclippy::correctness",
-                        "-Dclippy::complexity",
-                        "-Wclippy::perf",
-                        "-Wclippy::pedantic",
-                    },
+                    command = "check",
+                    extraArgs = {},
                 },
                 cargo = {
                     allFeatures = true,
