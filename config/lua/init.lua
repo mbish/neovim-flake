@@ -3,6 +3,7 @@ require("scripts.cyberdream")
 require("scripts.settings")
 require("scripts.keys")
 require("scripts.whitespace")
+require("scripts.ft")
 
 -- 2. non-lazy plugins configs
 require("scripts.fzf") -- can this be lazy?
