@@ -52,13 +52,6 @@ return {
         ft = "lua",
     },
     {
-        "scripts.lsp.rustaceanvim",
-        load = function()
-            require("scripts.lsp.rustaceanvim")
-        end,
-        ft = "rust",
-    },
-    {
         "scripts.lsp.hls",
         load = function()
             require("scripts.lsp.hls")
