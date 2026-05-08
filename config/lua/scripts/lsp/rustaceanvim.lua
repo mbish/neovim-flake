@@ -69,8 +69,3 @@ vim.g.rustaceanvim = {
         },
     },
 }
-
-vim.keymap.set("n", "<leader>cl", function()
-    vim.cmd("RustLsp config %s", clippy_config)
-    vim.cmd("RustLsp flyCheck")
-end, { desc = "Toggle Clippy/Check Diagnostics" })

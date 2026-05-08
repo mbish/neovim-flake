@@ -15,12 +15,11 @@ local textobjects = {
             ["ir"] = { query = "@return.inner", desc = "Select inner return" },
             ["ar"] = { query = "@reutrn.outer", desc = "Select outer return" },
             ["aF"] = { query = "@function.name", desc = "Select the function name" },
-
-        }
-    }
+        },
+    },
 }
 
-require("nvim-treesitter.configs").setup({
+--[[ require("nvim-treesitter.configs").setup({
     sync_install = false,
     auto_install = false,
     highlight = {
@@ -38,7 +37,8 @@ require("nvim-treesitter.configs").setup({
         keybindings = {},
     },
     textobjects = textobjects,
-})
+}) ]]
 
-require('ts_context_commentstring').setup {}
+require("ts_context_commentstring").setup({})
 vim.g.skip_ts_context_commentstring_module = true
+vim.treesitter.start()

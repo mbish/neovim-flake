@@ -85,7 +85,7 @@
               opt = [
                 bufferline-nvim
                 conform-nvim
-                fugitive
+                vim-fugitive
                 gitsigns-nvim
                 kommentary
                 lazydev-nvim
@@ -141,10 +141,10 @@
               lua54Packages.luacheck
               shellcheck
               stylua
-              nixfmt-rfc-style
+              nixfmt
               yamlfix
               yamllint
-              nodePackages.prettier
+              prettier
             ]
             ++ vimPlugins.nvim-treesitter.withAllGrammars.dependencies;
         };
