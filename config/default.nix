@@ -1,4 +1,5 @@
-{pkgs, python3}: let
+{ pkgs, ... }:
+let
   configDir = pkgs.stdenv.mkDerivation {
     name = "nvim-lua-lazy-configs";
     src = ./lua; # NOTE: the installPhase commands relative to this dir
@@ -8,7 +9,8 @@
       cp -r ./scripts $out/lua/
     '';
   };
-in ''
+in
+''
   set rtp+=${configDir}
   let g:snippet_path = "${../snippets}"
   source ${configDir}/init.lua
