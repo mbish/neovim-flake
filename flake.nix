@@ -134,7 +134,6 @@
               fd
               fzf
               powerline-fonts
-              gcc
 
               # always install lua and nix lsp
               nixd
