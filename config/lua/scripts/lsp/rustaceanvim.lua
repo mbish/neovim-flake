@@ -7,6 +7,21 @@ vim.g.rustaceanvim = {
                     allFeatures = true,
                 },
             },
+            diagnostics = {
+                enable = true,
+                disabled = { "unresolved-proc-macro" },
+            },
+            inlayHints = {
+                bindingModeHints = {
+                    enable = true,
+                },
+                closureReturnTypeHints = {
+                    enable = true,
+                },
+                lifetimeElisionHints = {
+                    enable = true,
+                },
+            },
         },
     },
 }

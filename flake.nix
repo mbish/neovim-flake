@@ -37,6 +37,7 @@
             p.toml
             p.bash
             p.markdown
+            p.git-rebase
           ])
         );
         customRC = import ./config {
