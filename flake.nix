@@ -62,7 +62,6 @@
                 guess-indent-nvim
                 haskell-tools-nvim
                 idris-vim
-                leap-nvim
                 lz-n
                 nvim-cmp
                 nvim-lspconfig
@@ -84,6 +83,7 @@
                 which-key-nvim
               ];
               opt = [
+                flash-nvim
                 bufferline-nvim
                 conform-nvim
                 vim-fugitive

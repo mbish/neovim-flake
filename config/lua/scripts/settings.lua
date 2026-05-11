@@ -37,6 +37,7 @@ o.modeline = false
 o.signcolumn = "yes"
 o.smartindent = false
 o.winborder = "single"
+o.ignorecase = true
 
 vim.cmd([[
     filetype plugin on

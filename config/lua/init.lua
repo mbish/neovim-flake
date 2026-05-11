@@ -17,7 +17,6 @@ require("scripts.treesitter-context")
 require("scripts.which-key")
 require("scripts.ultisnips")
 require("scripts.gitsigns-all") -- can this be lazy?
-require("scripts.leap")
 require("scripts.test-vim")
 
 -- 3. lazy configs and tweaks

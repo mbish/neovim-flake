@@ -10,6 +10,7 @@ require("lz.n").load({
     require("scripts.gitsigns").lazy(),
     require("scripts.conform-nvim").lazy(),
     require("scripts.kommentary").lazy(),
+    require("scripts.flash").lazy(),
     require("scripts.vimwiki").lazy(), -- we have to override these key mappings
 })
 require("lz.n").load(require("scripts.lsp"))
