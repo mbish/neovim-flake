@@ -2,7 +2,7 @@ vim.g.rustaceanvim = {
     server = {
         default_settings = {
             ["rust-analyzer"] = {
-                checkOnSave = false,
+                checkOnSave = true,
                 cargo = {
                     allFeatures = true,
                 },

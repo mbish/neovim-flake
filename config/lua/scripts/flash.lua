@@ -5,7 +5,13 @@ local keys = {
 }
 
 local setup = function()
-    require("flash").setup()
+    require("flash").setup({
+        modes = {
+            char = {
+                keys = {},
+            },
+        },
+    })
 end
 
 local lazy = function()
