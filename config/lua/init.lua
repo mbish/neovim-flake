@@ -18,6 +18,7 @@ require("scripts.which-key")
 require("scripts.ultisnips")
 require("scripts.gitsigns-all") -- can this be lazy?
 require("scripts.test-vim")
+require("scripts.render-markdown")
 
 -- 3. lazy configs and tweaks
 require("scripts.lz-n")

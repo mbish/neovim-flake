@@ -81,6 +81,7 @@
                 vim-swap
                 vim-test
                 which-key-nvim
+                render-markdown-nvim
               ];
               opt = [
                 flash-nvim

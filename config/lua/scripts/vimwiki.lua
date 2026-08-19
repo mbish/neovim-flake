@@ -1,4 +1,5 @@
 vim.g.vimwiki_key_mappings = { all_maps = 0 }
+vim.g.vimwiki_list = {{ syntax = 'markdown', ext = '.wiki' }}
 local setup = function()
     vim.api.nvim_create_autocmd({ "BufNewFile", "BufRead" }, {
         pattern = {
