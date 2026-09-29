@@ -6,6 +6,7 @@ require("scripts.whitespace")
 require("scripts.ft")
 
 -- 2. non-lazy plugins configs
+require("scripts.lsp.rustaceanvim")
 require("scripts.fzf") -- can this be lazy?
 require("scripts.cmp") -- can this be lazy?
 require("scripts.spelling") -- can this be lazy?

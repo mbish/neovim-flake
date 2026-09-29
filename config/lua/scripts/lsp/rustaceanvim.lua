@@ -1,25 +1,29 @@
 vim.g.rustaceanvim = {
     server = {
+        capabilities = require("cmp_nvim_lsp").default_capabilities(),
         default_settings = {
             ["rust-analyzer"] = {
-                checkOnSave = true,
                 cargo = {
                     allFeatures = true,
                 },
-            },
-            diagnostics = {
-                enable = true,
-                disabled = { "unresolved-proc-macro" },
-            },
-            inlayHints = {
-                bindingModeHints = {
-                    enable = true,
+                check = {
+                    command = "check",
+                    -- extraArgs = { "--target-dir", "target/analyzer" },
                 },
-                closureReturnTypeHints = {
+                diagnostics = {
                     enable = true,
+                    disabled = { "unresolved-proc-macro", "inactive-code" },
                 },
-                lifetimeElisionHints = {
-                    enable = true,
+                inlayHints = {
+                    bindingModeHints = {
+                        enable = true,
+                    },
+                    closureReturnTypeHints = {
+                        enable = true,
+                    },
+                    lifetimeElisionHints = {
+                        enable = true,
+                    },
                 },
             },
         },
